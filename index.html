@@ -272,25 +272,9 @@
   .side-button:hover {
     background-color: #246036;
   }
-  /* Adaptació responsive per a mòbil i tauleta */
-@media (max-width: 768px) {
-  .side-buttons {
-    position: static; /* elimina el fixed */
-    top: auto;
-    right: auto;
-    display: flex;
-    flex-direction: row; /* horitzontal */
-    justify-content: center;
-    gap: 10px;
-    padding: 10px 0;
-    background: transparent;
-    box-shadow: none;
-    border-radius: 0;
-    width: 100%;
-    margin: 1rem 0;
     /* Adaptació responsive per a mòbil i tauleta */
 @media (max-width: 768px) {
-  #side-buttons {
+  .side-buttons {
     position: static; /* elimina el fixed */
     top: auto;
     right: auto;
@@ -331,8 +315,9 @@
 }
 
 </style>
-
+   <!-- Botó reserves -->
 <div id="side-buttons" class="side-buttons">
+
   <a href="https://www.airbnb.com/rooms/xxxxxxxx" target="_blank" class="side-button" rel="noopener noreferrer">
     Reserva a Airbnb
   </a>
@@ -344,10 +329,10 @@
 <button onclick="window.location.href='souvenirs.html'" style="background:#557a49; color:#fff; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold; margin:1rem 0;">
   Souvenirs
 </button>
+   <!-- Botó informació turística -->
 <button onclick="window.location.href='turisme.html'" style="background:#557a49; color:#fff; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold; margin:1rem 0;">
   Información Turística
 </button>
-
 
 </div>
 <body>
