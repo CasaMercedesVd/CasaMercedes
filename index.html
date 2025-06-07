@@ -233,6 +233,19 @@
       height: auto;
       display: block;
     }
+  /* Adaptació per mòbils i tauletes */
+@media (max-width: 768px) {
+  #rosa-lateral {
+    position: static; /* treiem la fixació per no tapar contingut */
+    transform: none; /* eliminem la transformació */
+    padding: 5px 0;
+    text-align: center;
+  }
+  
+  #rosa-lateral img {
+    width: 80px; /* fem la imatge més petita */
+    margin: 0 auto;
+  }
   /* Contenidor botons laterals */
   .side-buttons {
     position: fixed;
@@ -468,7 +481,6 @@
 <!-- Rosa minimalista i elegant estil ploma lateral esquerra -->
 <div id="rosa-lateral">
   <img src="rosa.png" alt="Rosa decorativa" style="width: 350px; height: auto;">
-
 </div>
 </body>
 </html>
