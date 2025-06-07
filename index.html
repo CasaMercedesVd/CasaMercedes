@@ -140,6 +140,13 @@
         <button class="carousel-button next" aria-label="Següent imatge" onclick="moveSlide(1)">❯</button>
       </div>
     </section>
+     </main>
+
+  <footer>
+    &copy; 2025 Casa Mercedes - Valderrubio
+  </footer>
+
+  <script>
     const translations = {
   ca: {
     'section1-title': 'Casa Mercedes, un llegat andalús ple d’història i ànima',
@@ -219,8 +226,62 @@
     'section2-text': `Casa Mercedes verdankt seinen Namen den Frauen des Hauses: kämpferische, unternehmerische, mutige, entschlossene und eigenständige Frauen, wie meine Großmutter und ihre Vorfahren. Diese Frauen webten die Geschichte dieses Hauses und hinterließen eine Spur von Stärke und Mut, die noch heute in jeder Ecke spürbar ist.`
   }
 };
-        // Inicialitzar la llengua per defecte
-    setLanguage('es');
+ const buttons = document.querySelectorAll('nav button');
+    const elementsToTranslate = [
+      'section1-title',
+      'section1-text1',
+      'section1-text2',
+      'section1-text3',
+      'section1-text4',
+      'section1-text5',
+      'section2-title',
+      'section2-text'
+    ];
+
+    function setLanguage(lang) {
+      // Actualitzar text
+      elementsToTranslate.forEach(id => {
+        document.getElementById(id).textContent = translations[lang][id];
+      });
+
+      // Actualitzar botons actius
+      buttons.forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        setLanguage(button.getAttribute('data-lang'));
+      });
+    });
+
+    // Carrusel
+    const track = document.getElementById('carousel-track');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let index = 0;
+    const slidesToShow = 2;
+    const totalSlides = track.children.length;
+
+    function updateCarousel() {
+      const slideWidth = track.children[0].getBoundingClientRect().width;
+      track.style.transform = `translateX(${-index * slideWidth}px)`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + totalSlides - slidesToShow + 1) % (totalSlides - slidesToShow + 1);
+      updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % (totalSlides - slidesToShow + 1);
+      updateCarousel();
+    });
+
+    // Inicialitzar la llengua per defecte
+    setLanguage('ca');
+    updateCarousel();
   </script>
 </body>
 </html>
