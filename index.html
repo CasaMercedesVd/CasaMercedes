@@ -4,8 +4,112 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Casa Mercedes - Turisme Rural</title>
-  <style>
-    /* Estil minimalista amb tocs andalusos, colors blanc, verd i fusta */
+<style>
+    /* Mòbils petits */
+@media (max-width: 480px) {
+  body {
+    padding: 0 0.5rem;
+    font-size: 0.9rem;
+  }
+  header {
+    font-size: 1.4rem;
+    padding: 0.8rem 0;
+  }
+  nav button {
+    padding: 0.4rem 0.6rem;
+    margin: 0 0.1rem;
+    font-size: 0.9rem;
+  }
+  main {
+    padding-bottom: 2rem;
+    max-width: 100%;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+  /* Carrusel: mostrar només 1 imatge per pantalla */
+  .carousel-slide {
+    min-width: 100%; /* 1 per pantalla */
+    padding: 0.5rem;
+  }
+  .carousel-slide img {
+    height: 180px; /* més petit */
+  }
+
+  /* Botons laterals */
+  .side-buttons {
+    top: auto;
+    bottom: 10px;
+    right: 50%;
+    transform: translateX(50%);
+    flex-direction: row;
+    gap: 10px;
+    padding: 0 0.5rem;
+  }
+  .side-button {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  /* Botons souvenirs i info */
+  .side-buttons button {
+    margin: 0.3rem 0.3rem 0 0;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Tauletes i mòbils grans */
+@media (min-width: 481px) and (max-width: 900px) {
+  body {
+    padding: 0 1rem;
+    font-size: 1rem;
+  }
+  header {
+    font-size: 1.6rem;
+    padding: 1rem 0;
+  }
+  nav button {
+    padding: 0.5rem 0.8rem;
+    margin: 0 0.2rem;
+    font-size: 1rem;
+  }
+  main {
+    max-width: 90%;
+    padding-bottom: 2.5rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 1.05rem;
+  }
+  .carousel-slide {
+    min-width: 50%; /* 2 per pantalla */
+    padding: 0.75rem;
+  }
+  .carousel-slide img {
+    height: 220px;
+  }
+  .side-buttons {
+    top: 40%;
+    right: 0;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .side-button {
+    padding: 10px 14px;
+    font-size: 1rem;
+  }
+  .side-buttons button {
+    margin: 1rem 0;
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+}
+/* Estil minimalista amb tocs andalusos, colors blanc, verd i fusta */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #fefefe;
