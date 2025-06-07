@@ -1,159 +1,226 @@
-
 <!DOCTYPE html>
 <html lang="ca">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Casa Mercedes</title>
   <style>
-    body { font-family: sans-serif; margin: 0; padding: 0; background: #fff; color: #333; }
-    header, section, footer { padding: 2rem; max-width: 900px; margin: auto; }
-    header { background-color: #f2f2f2; text-align: center; }
-    h1, h2 { color: #6b2c2c; }
-    nav button { margin: 0.2rem; padding: 0.5rem 1rem; cursor: pointer; }
-    .carousel { position: relative; max-width: 800px; margin: auto; overflow: hidden; }
-    .carousel-image { display: none; width: 100%; border-radius: 10px; }
-    .carousel-image.active { display: block; }
-    .prev, .next {
-      cursor: pointer; position: absolute; top: 50%; padding: 12px; margin-top: -22px;
-      color: #fff; font-weight: bold; font-size: 24px; background-color: rgba(0, 0, 0, 0.4);
-      border: none; border-radius: 50%; z-index: 10;
+    /* Fonts i colors */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+    :root {
+      --blanc: #faf9f6;
+      --verd: #4a7c59;
+      --fusta: #b08b5b;
+      --text-color: #3a3a3a;
     }
-    .prev { left: 10px; }
-    .next { right: 10px; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--blanc);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+    }
+
+    header {
+      background: var(--verd);
+      color: var(--blanc);
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgb(74 124 89 / 0.3);
+      font-weight: 700;
+    }
+
+    header h1 {
+      margin: 0.2rem 0;
+      font-size: 2.8rem;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.1em;
+    }
+
+    header p {
+      margin: 0;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.2rem;
+      color: var(--blanc);
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav button {
+      background: var(--fusta);
+      border: none;
+      margin: 0 0.3rem;
+      padding: 0.5rem 0.9rem;
+      font-weight: 600;
+      color: var(--blanc);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      user-select: none;
+    }
+
+    nav button:hover, nav button:focus {
+      background: var(--blanc);
+      color: var(--verd);
+      outline: none;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+
+    h2 {
+      color: var(--verd);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid var(--fusta);
+      padding-bottom: 0.2rem;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      white-space: pre-line;
+    }
   </style>
 </head>
 <body>
-  <header>
+   <header>
     <h1 id="title">Casa Mercedes</h1>
     <p id="subtitle">Valderrubio, Granada</p>
-    <nav>
-      <button onclick="setLang('ca')">Català</button>
-      <button onclick="setLang('es')">Castellano</button>
-      <button onclick="setLang('eu')">Euskera</button>
-      <button onclick="setLang('gl')">Galego</button>
-      <button onclick="setLang('en')">English</button>
-      <button onclick="setLang('fr')">Français</button>
-      <button onclick="setLang('de')">Deutsch</button>
+    <nav aria-label="Canvi d'idioma">
+      <button type="button" onclick="setLang('ca')">Català</button>
+      <button type="button" onclick="setLang('es')">Castellano</button>
+      <button type="button" onclick="setLang('eu')">Euskera</button>
+      <button type="button" onclick="setLang('gl')">Galego</button>
+      <button type="button" onclick="setLang('en')">English</button>
+      <button type="button" onclick="setLang('fr')">Français</button>
+      <button type="button" onclick="setLang('de')">Deutsch</button>
     </nav>
   </header>
+  <main>
+    <section>
+      <h2 id="section1-title"></h2>
+      <p id="section1-text1"></p>
+      <p id="section1-text2"></p>
+      <p id="section1-text3"></p>
+    </section>
 
-  <section>
-    <h2 id="section1-title"></h2>
-    <p id="section1-text1"></p>
-    <p id="section1-text2"></p>
-    <p id="section1-text3"></p>
-  </section>
-
-  <section>
-    <h2 id="section2-title"></h2>
-    <p id="section2-text"></p>
-  </section>
-
-  <section id="gallery">
-    <h2 id="gallery-title">Galeria</h2>
-    <div class="carousel">
-      <img src="https://source.unsplash.com/800x500/?andalusian-house" class="carousel-image active">
-      <img src="https://source.unsplash.com/800x500/?patio" class="carousel-image">
-      <img src="https://source.unsplash.com/800x500/?rustic-kitchen" class="carousel-image">
-      <img src="https://source.unsplash.com/800x500/?bedroom" class="carousel-image">
-      <img src="https://source.unsplash.com/800x500/?andalusia" class="carousel-image">
-      <button class="prev" onclick="moveSlide(-1)">❮</button>
-      <button class="next" onclick="moveSlide(1)">❯</button>
-    </div>
-  </section>
-
-  <section>
-    <h2 id="section3-title">Contacte i reserves</h2>
-    <p id="section3-text">Per a més informació o per reservar, podeu visitar el nostre perfil d'Airbnb:</p>
-    <a id="airbnb-link" href="#">Enllaç a Airbnb (aviat disponible)</a>
-  </section>
-
-  <script>
+    <section>
+      <h2 id="section2-title"></h2>
+      <p id="section2-text"></p>
+    </section>
+    <section id="gallery">
+      <h2>Galeria</h2>
+      <div class="carousel-container" aria-label="Galeria d'imatges">
+        <button class="carousel-button prev" aria-label="Anterior imatge" onclick="moveSlide(-1)">❮</button>
+        <div class="carousel-track" id="carousel-track">
+          <div class="carousel-slide"><img src="https://source.unsplash.com/800x600/?andalusia,house" alt="Casa andalusa" /></div>
+          <div class="carousel-slide"><img src="https://source.unsplash.com/800x600/?andalusia,patio" alt="Patio andalús" /></div>
+          <div class="carousel-slide"><img src="https://source.unsplash.com/800x600/?kitchen,rustic" alt="Cuina rústica" /></div>
+          <div class="carousel-slide"><img src="https://source.unsplash.com/800x600/?bedroom,cozy" alt="Habitació acollidora" /></div>
+          <div class="carousel-slide"><img src="https://source.unsplash.com/800x600/?olive,garden" alt="Jardí d'oliveres" /></div>
+          <div class="carousel-slide"><img src="https://source.unsplash.com/800x600/?well,courtyard" alt="Pou al pati" /></div>
+        </div>
+        <button class="carousel-button next" aria-label="Següent imatge" onclick="moveSlide(1)">❯</button>
+      </div>
+    </section>
     const translations = {
-      ca: {
-        "section1-title": "Benvinguts a la casa de la llum i la paraula",
-        "section1-text1": "A Valderrubio, un poble petit envoltat d'oliveres i records, s'amaga una casa plena d'ànima, silenci i poesia.",
-        "section1-text2": "Aquesta casa de quatre habitacions —una d'elles a la planta baixa— compta amb dos banys i una àmplia cuina-menjador.",
-        "section1-text3": "Allotjar-se aquí no és només descansar: és respirar literatura, viure cultura i trepitjar escenaris reals de l'obra lorquiana.",
-        "section2-title": "Un homenatge a les dones de la casa",
-        "section2-text": "Casa Mercedes ret homenatge a dones valentes, decidides i autosuficients. Una memòria viva de les lluitadores que la van habitar."
-      },
-      es: {
-        "section1-title": "Bienvenidos a la casa de la luz y la palabra",
-        "section1-text1": "En Valderrubio, un pequeño pueblo entre olivos y recuerdos, se esconde una casa llena de alma, silencio y poesía.",
-        "section1-text2": "Esta casa de cuatro habitaciones —una en la planta baja— cuenta con dos baños y una amplia cocina-comedor.",
-        "section1-text3": "Alojarse aquí no es solo descansar: es respirar literatura, vivir cultura y pisar escenarios reales de la obra lorquiana.",
-        "section2-title": "Un homenaje a las mujeres de la casa",
-        "section2-text": "Casa Mercedes honra a mujeres valientes, decididas y autosuficientes. Un recuerdo vivo de las luchadoras que la habitaron."
-      },
-      eu: {
-        "section1-title": "Argiaren eta hitzaren etxea",
-        "section1-text1": "Valderrubioko herrixkan, olibo artean, poesiaz eta isiltasunez beteriko etxea dago.",
-        "section1-text2": "Lau logela ditu —bat beheko solairuan— bi bainugela eta sukalde-jangela zabala.",
-        "section1-text3": "Hemen ostatu hartzea literaturaz arnastea eta Lorcaren mundua bizitzea da.",
-        "section2-title": "Etxeko emakumeen omenez",
-        "section2-text": "Casa Mercedes emakume ausart eta autonomoen omenezko etxea da, haien indarra omentzen du."
-      },
-      gl: {
-        "section1-title": "A casa da luz e da palabra",
-        "section1-text1": "En Valderrubio, un pequeno pobo rodeado de oliveiras, agóchase unha casa chea de alma, silencio e poesía.",
-        "section1-text2": "Conta con catro habitacións —unha delas na planta baixa—, dous baños e unha ampla cociña-comedor.",
-        "section1-text3": "Aloxarse aquí é respirar literatura e camiñar por escenarios lorquianos.",
-        "section2-title": "Unha homenaxe ás mulleres da casa",
-        "section2-text": "Casa Mercedes honra mulleres loitadoras, decididas e autosuficientes. A súa memoria vive nestes muros."
-      },
-      en: {
-        "section1-title": "Welcome to the house of light and poetry",
-        "section1-text1": "In Valderrubio, a small village surrounded by olive trees and memories, lies a home full of soul, silence, and poetry.",
-        "section1-text2": "This four-bedroom house —one on the ground floor— has two bathrooms and a spacious kitchen-dining area.",
-        "section1-text3": "Staying here means breathing literature, living culture, and stepping into Lorca's world.",
-        "section2-title": "A tribute to the women of the house",
-        "section2-text": "Casa Mercedes is a tribute to strong, independent women. Their strength echoes in every room."
-      },
-      fr: {
-        "section1-title": "Bienvenue dans la maison de la lumière et des mots",
-        "section1-text1": "À Valderrubio, petit village entouré d’oliviers, se cache une maison pleine d’âme, de silence et de poésie.",
-        "section1-text2": "Elle comprend quatre chambres —dont une au rez-de-chaussée—, deux salles de bains et une grande cuisine-salle à manger.",
-        "section1-text3": "Séjourner ici, c’est respirer la littérature et vivre la culture de Lorca.",
-        "section2-title": "Un hommage aux femmes de la maison",
-        "section2-text": "Casa Mercedes rend hommage à des femmes courageuses et indépendantes. Leur souvenir vit entre ces murs."
-      },
-      de: {
-        "section1-title": "Willkommen im Haus des Lichts und der Worte",
-        "section1-text1": "In Valderrubio, einem kleinen Dorf voller Oliven und Erinnerungen, steht ein Haus voller Seele, Stille und Poesie.",
-        "section1-text2": "Das Haus verfügt über vier Schlafzimmer —eins im Erdgeschoss—, zwei Badezimmer und eine große Wohnküche.",
-        "section1-text3": "Ein Aufenthalt hier ist ein Eintauchen in Lorcas Welt und seine Literatur.",
-        "section2-title": "Eine Hommage an die Frauen des Hauses",
-        "section2-text": "Casa Mercedes ist eine Hommage an mutige, selbstbestimmte Frauen. Ihre Kraft lebt in diesen Wänden weiter."
-      }
-    };
+  ca: {
+    'section1-title': 'Casa Mercedes, un llegat andalús ple d’història i ànima',
+    'section1-text1': `A Valderrubio, un petit poble bressolat per oliveres i records, s’amaga una casa plena d’ànima, silenci i poesia. A pocs passos de la històrica casa de Federico García Lorca, la nostra llar acull els ecos d’aquella Andalusia que ell va immortalitzar: blanca, intensa, viva.`,
+    'section1-text2': `Aquesta casa de quatre habitacions — una d'elles a la planta baixa, ideal per accés fàcil —, compta amb dues sales de bany i una àmplia cuina-menjador on els àpats es barregen amb rialles i històries. Però és al seu pati andalús on el temps sembla aturar-se: un espai íntim, presidit per un antic pou, on la brisa murmura versos antics.`,
+    'section1-text3': `Imagina’t esmorzant a la llum suau del matí, escoltant els sons del poble que desperta… o llegint sota l’ombra, sabent que en aquells mateixos carrers Lorca va imaginar Bernarda Alba, va sentir la terra i la veu de les dones del sud.`,
+    'section1-text4': `Allotjar-se aquí no és només descansar: és respirar literatura, viure cultura, caminar per escenaris reals de l’obra lorquiana. És tornar a una Andalusia autèntica i plena de màgia.`,
+    'section1-text5': `📍 A només uns metres de la Casa Museu de Federico García Lorca, la nostra casa és un refugi per a amants de la pau, l’art i la bellesa.`,
 
-    function setLang(lang) {
-      const t = translations[lang];
-      for (const key in t) {
-        const el = document.getElementById(key);
-        if (el) el.textContent = t[key];
-      }
-    }
+    'section2-title': 'Homenatge a les dones de la casa',
+    'section2-text': `Casa Mercedes pren el seu nom de les dones de la casa: dones lluitadores, emprenedores, valentes, decidides i autosuficients, com la meva àvia i els seus avantpassats. Aquestes dones van teixir la història d’aquesta llar, deixant una empremta de força i coratge que avui encara es respira en cada racó.`
+  },
+  es: {
+    'section1-title': 'Casa Mercedes, un legado andaluz lleno de historia y alma',
+    'section1-text1': `En Valderrubio, un pequeño pueblo mecido por olivos y recuerdos, se esconde una casa llena de alma, silencio y poesía. A pocos pasos de la histórica casa de Federico García Lorca, nuestro hogar acoge los ecos de esa Andalucía que él inmortalizó: blanca, intensa, viva.`,
+    'section1-text2': `Esta casa de cuatro habitaciones — una de ellas en la planta baja, ideal para acceso fácil —, cuenta con dos baños y una amplia cocina-comedor donde las comidas se mezclan con risas e historias. Pero es en su patio andaluz donde el tiempo parece detenerse: un espacio íntimo, presidido por un antiguo pozo, donde la brisa murmura versos antiguos.`,
+    'section1-text3': `Imagínate desayunando a la suave luz de la mañana, escuchando los sonidos del pueblo que despierta… o leyendo bajo la sombra, sabiendo que en esas mismas calles Lorca imaginó Bernarda Alba, sintió la tierra y la voz de las mujeres del sur.`,
+    'section1-text4': `Alojarse aquí no es solo descansar: es respirar literatura, vivir cultura, caminar por escenarios reales de la obra lorquiana. Es volver a una Andalucía auténtica y llena de magia.`,
+    'section1-text5': `📍 A solo unos metros de la Casa Museo de Federico García Lorca, nuestra casa es un refugio para amantes de la paz, el arte y la belleza.`,
 
-    let slideIndex = 0;
-    const slides = document.getElementsByClassName("carousel-image");
-    function showSlide(index) {
-      for (let i = 0; i < slides.length; i++) slides[i].classList.remove("active");
-      slides[index].classList.add("active");
-    }
-    function moveSlide(step) {
-      slideIndex += step;
-      if (slideIndex >= slides.length) slideIndex = 0;
-      if (slideIndex < 0) slideIndex = slides.length - 1;
-      showSlide(slideIndex);
-    }
+    'section2-title': 'Homenaje a las mujeres de la casa',
+    'section2-text': `Casa Mercedes toma su nombre de las mujeres de la casa: mujeres luchadoras, emprendedoras, valientes, decididas y autosuficientes, como mi abuela y sus antepasados. Estas mujeres tejieron la historia de este hogar, dejando una huella de fuerza y coraje que hoy aún se respira en cada rincón.`
+  },
+  eu: {
+    'section1-title': 'Casa Mercedes, historia eta arima betetako andaluzi ondarea',
+    'section1-text1': `Valderrubion, oliboen eta oroitzapenen artean zaindutako herri txiki batean, arima, isiltasuna eta poesiaz beteriko etxe bat dago ezkutatuta. Federico García Lorcaren etxetik metro gutxira, gure etxeak Andaluzia hark betiko utzi zuen oroitzapenak gordetzen ditu: zuria, bizi-bizi eta intentsua.`,
+    'section1-text2': `Lau logelako etxe hau — bat beheko solairuan, sarbide erraza izateko aproposa —, bi komun eta sukalde-jantoki zabal batekin dago, non bazkariak barre eta istorioekin nahasten diren. Baina andaluzi patiora heltzean denbora geldirik dirudi: putzu zahar batek gidatutako espazio intimo bat, non haizeak bertako bertso zaharrak darioen.`,
+    'section1-text3': `Irudikatu goizeko argi leunean gosaltzen, herriko zaratak entzuten... edo itzalean irakurtzen, bide beretan Lorcak Bernarda Alba irudikatu zuela eta hegoaldeko emakumeen lurraren eta ahotsaren sentimendua izan zuela jakinda.`,
+    'section1-text4': `Hemen egotea ez da soilik atseden hartzea: literaturaz arnastea da, kultura bizitzea, lorca lanaren benetako eszenatokietan ibiltzea. Andaluzia benetakoa eta magiaz beterikoa berreskuratzea da.`,
+    'section1-text5': `📍 Federico García Lorcaren Museo Etxetik metro gutxira, gure etxea bake, arte eta edertasun maite dutenentzat babesleku bat da.`,
 
-    window.onload = () => {
-      setLang('ca');
-      showSlide(slideIndex);
-    };
+    'section2-title': 'Etxeko emakumeei omenaldia',
+    'section2-text': `Casa Mercedes etxeko emakumeengandik hartu du izena: emakume borrokalariak, ekintzaileak, ausartak, erabakigarriak eta autonomoak, nire amonatik hasi eta arbasoetara. Emakume hauek etxearen historia ehundu zuten, indar eta ausardi aztarna utziz, gaur egun ere txoko bakoitzean arnasten dena.`
+  },
+  gl: {
+    'section1-title': 'Casa Mercedes, un legado andaluz cheo de historia e alma',
+    'section1-text1': `En Valderrubio, un pequeno pobo mecido por oliveiras e recordos, agocha unha casa chea de alma, silencio e poesía. A poucos pasos da histórica casa de Federico García Lorca, o noso fogar acolle os ecos desa Andalucía que el inmortalizou: branca, intensa, viva.`,
+    'section1-text2': `Esta casa de catro cuartos — un deles na planta baixa, ideal para un acceso doado — conta con dous baños e unha ampla cociña-comedor onde as comidas mestúranse con risas e historias. Pero é no seu patio andaluz onde o tempo parece detererse: un espazo íntimo, presidido por un antigo pozo, onde a brisa murmura versos antigos.`,
+    'section1-text3': `Imaxina espertar tomando o almorzo á suave luz da mañá, escoitando os sons do pobo que se espertan… ou lendo á sombra, sabendo que nesas mesmas rúas Lorca imaxinou Bernarda Alba, sentiu a terra e a voz das mulleres do sur.`,
+    'section1-text4': `Aloxarse aquí non é só descansar: é respirar literatura, vivir cultura, camiñar por escenarios reais da obra lorquiana. É volver a unha Andalucía auténtica e chea de maxia.`,
+    'section1-text5': `📍 A só uns metros da Casa Museo de Federico García Lorca, a nosa casa é un refuxio para amantes da paz, a arte e a beleza.`,
+
+    'section2-title': 'Homenaxe ás mulleres da casa',
+    'section2-text': `Casa Mercedes toma o seu nome das mulleres da casa: mulleres loitadoras, emprendedoras, valentes, decididas e autosuficientes, como a miña avoa e os seus antepasados. Estas mulleres teceron a historia deste fogar, deixando unha pegada de forza e coraxe que hoxe aínda se respira en cada recuncho.`
+  },
+  en: {
+    'section1-title': 'Casa Mercedes, an Andalusian legacy full of history and soul',
+    'section1-text1': `In Valderrubio, a small village cradled by olive trees and memories, hides a house full of soul, silence, and poetry. Just steps away from the historic home of Federico García Lorca, our house holds the echoes of that Andalusia he immortalized: white, intense, alive.`,
+    'section1-text2': `This four-bedroom house — one of them on the ground floor, ideal for easy access — features two bathrooms and a spacious kitchen-dining room where meals blend with laughter and stories. But it is in its Andalusian courtyard where time seems to stand still: an intimate space, presided over by an old well, where the breeze whispers ancient verses.`,
+    'section1-text3': `Imagine having breakfast in the soft morning light, listening to the sounds of the waking village… or reading in the shade, knowing that on those very streets Lorca imagined Bernarda Alba, felt the land, and heard the voice of southern women.`,
+    'section1-text4': `Staying here is not just resting: it’s breathing literature, living culture, walking through real settings of Lorca’s work. It is returning to an authentic and magical Andalusia.`,
+    'section1-text5': `📍 Just meters from the Federico García Lorca House Museum, our home is a refuge for lovers of peace, art, and beauty.`,
+
+    'section2-title': 'Tribute to the women of the house',
+    'section2-text': `Casa Mercedes takes its name from the women of the house: strong, entrepreneurial, brave, determined, and self-sufficient women, like my grandmother and her ancestors. These women wove the history of this home, leaving a mark of strength and courage still felt in every corner today.`
+  },
+  fr: {
+    'section1-title': 'Casa Mercedes, un héritage andalou plein d’histoire et d’âme',
+    'section1-text1': `À Valderrubio, un petit village bercé par les oliviers et les souvenirs, se cache une maison pleine d’âme, de silence et de poésie. À quelques pas de la maison historique de Federico García Lorca, notre demeure abrite les échos de cette Andalousie qu’il a immortalisée : blanche, intense, vivante.`,
+    'section1-text2': `Cette maison de quatre chambres — dont une au rez-de-chaussée, idéale pour un accès facile — dispose de deux salles de bains et d’une grande cuisine-salle à manger où les repas se mêlent aux rires et aux histoires. Mais c’est dans sa cour andalouse que le temps semble s’arrêter : un espace intime, dominé par un vieux puits, où la brise murmure des vers anciens.`,
+    'section1-text3': `Imaginez prendre votre petit-déjeuner à la douce lumière du matin, écouter les sons du village qui s’éveille… ou lire à l’ombre, sachant que dans ces mêmes rues Lorca a imaginé Bernarda Alba, a senti la terre et la voix des femmes du sud.`,
+    'section1-text4': `Séjourner ici, ce n’est pas seulement se reposer : c’est respirer la littérature, vivre la culture, marcher dans les décors réels de l’œuvre lorquienne. C’est revenir à une Andalousie authentique et pleine de magie.`,
+    'section1-text5': `📍 À seulement quelques mètres de la Maison-Musée Federico García Lorca, notre maison est un refuge pour les amateurs de paix, d’art et de beauté.`,
+
+    'section2-title': 'Hommage aux femmes de la maison',
+    'section2-text': `Casa Mercedes tire son nom des femmes de la maison : des femmes courageuses, entrepreneuses, vaillantes, déterminées et autonomes, comme ma grand-mère et ses ancêtres. Ces femmes ont tissé l’histoire de cette maison, laissant une empreinte de force et de courage que l’on ressent encore aujourd’hui dans chaque recoin.`
+  },
+    de: {
+    'section1-title': 'Casa Mercedes, ein andalusisches Erbe voller Geschichte und Seele',
+    'section1-text1': `In Valderrubio, einem kleinen Dorf, das von Olivenbäumen und Erinnerungen umgeben ist, verbirgt sich ein Haus voller Seele, Stille und Poesie. Nur wenige Schritte vom historischen Haus Federico García Lorcas entfernt, birgt unser Zuhause die Echos jener Andalusien, die er unsterblich machte: weiß, intensiv, lebendig.`,
+    'section1-text2': `Dieses Haus mit vier Schlafzimmern — eines davon im Erdgeschoss, ideal für leichten Zugang — verfügt über zwei Badezimmer und eine geräumige Wohnküche, in der Mahlzeiten mit Lachen und Geschichten verschmelzen. Doch erst im andalusischen Innenhof scheint die Zeit stillzustehen: ein intimer Raum, geprägt von einem alten Brunnen, wo die Brise alte Verse flüstert.`,
+    'section1-text3': `Stellen Sie sich vor, Sie frühstücken im sanften Morgenlicht, hören die Geräusche des erwachenden Dorfes… oder lesen im Schatten und wissen, dass Lorca in genau diesen Straßen Bernarda Alba erdachte, die Erde spürte und die Stimmen der Frauen des Südens hörte.`,
+    'section1-text4': `Hier zu wohnen heißt nicht nur auszuruhen: Es bedeutet, Literatur zu atmen, Kultur zu leben und durch reale Schauplätze von Lorcas Werk zu wandeln. Es bedeutet, zu einem authentischen und magischen Andalusien zurückzukehren.`,
+    'section1-text5': `📍 Nur wenige Meter vom Federico García Lorca Hausmuseum entfernt ist unser Haus ein Zufluchtsort für Liebhaber von Frieden, Kunst und Schönheit.`,
+
+    'section2-title': 'Eine Hommage an die Frauen des Hauses',
+    'section2-text': `Casa Mercedes verdankt seinen Namen den Frauen des Hauses: kämpferische, unternehmerische, mutige, entschlossene und eigenständige Frauen, wie meine Großmutter und ihre Vorfahren. Diese Frauen webten die Geschichte dieses Hauses und hinterließen eine Spur von Stärke und Mut, die noch heute in jeder Ecke spürbar ist.`
+  }
+};
+        // Inicialitzar la llengua per defecte
+    setLanguage('es');
   </script>
 </body>
 </html>
