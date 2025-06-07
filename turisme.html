@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Turisme a Valderrubio i Granada - Casa Mercedes</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fffef9;
+    color: #2f6f48;
+    margin: 2rem;
+    line-height: 1.6;
+  }
+  h1, h2 {
+    color: #557a49;
+    margin-bottom: 0.5rem;
+  }
+  ul {
+    list-style: disc inside;
+    margin-bottom: 1.5rem;
+  }
+  a {
+    color: #557a49;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .back-link {
+    margin-top: 2rem;
+    display: inline-block;
+    color: #557a49;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .back-link:hover {
+    text-decoration: underline;
+  }
+  #lang-buttons {
+    margin-bottom: 1rem;
+  }
+  #lang-buttons button {
+    background: #2f6f48;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-right: 0.3rem;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: bold;
+  }
+  #lang-buttons button:hover {
+    background: #557a49;
+  }
+</style>
+</head>
+<body>
+
+<div id="lang-buttons">
+  <button onclick="changeLang('ca')">Català</button>
+  <button onclick="changeLang('es')">Castellà</button>
+  <button onclick="changeLang('eu')">Euskera</button>
+  <button onclick="changeLang('gl')">Gallec</button>
+  <button onclick="changeLang('en')">English</button>
+  <button onclick="changeLang('fr')">Français</button>
+  <button onclick="changeLang('de')">Deutsch</button>
+</div>
+
+<h1 id="title"></h1>
+
+<section>
+  <h2 id="hiking-title"></h2>
+  <p id="hiking-text"></p>
+</section>
+
+<section>
+  <h2 id="cultural-title"></h2>
+  <ul id="cultural-list"></ul>
+</section>
+
+<section>
+  <h2 id="food-title"></h2>
+  <p id="food-text"></p>
+</section>
+
+<section>
+  <h2 id="transport-title"></h2>
+  <ul id="transport-list"></ul>
+</section>
+
+<a href="index.html" class="back-link" id="back-text"></a>
+
+<script>
+  const texts = {
+    ca: {
+      title: "Turisme a Valderrubio i voltants de Granada",
+      hikingTitle: "Senderisme i Rutes amb Bici",
+      hikingText: "Descobreix els preciosos paisatges de l'Albufera i les muntanyes que envolten Valderrubio amb rutes de senderisme i ciclisme per a tots els nivells.",
+      culturalTitle: "Visites Culturals",
+      culturalList: [
+        "Casa-Museu Federico García Lorca: A pocs metres de Casa Mercedes, visita la casa on va viure Lorca i inspira la seva obra.",
+        "Casa de Bernarda Alba: Coneguda per l’obra de Lorca, situada també a Valderrubio.",
+        "Entrades: Compra les entrades en línia a través del web oficial de la Casa Museu o als punts d'informació turística.",
+        "Alhambra de Granada: Monument imprescindible, reserva la visita anticipadament a alhambra-patronato.es."
+      ],
+      foodTitle: "Gastronomia i Oci",
+      foodText: "Gaudeix de la cuina andalusa en restaurants tradicionals de Valderrubio i Granada. Descobreix tapes, plats típics i vins locals en zones d'oci amb ambient únic.",
+      transportTitle: "Transport i Accessibilitat",
+      transportList: [
+        "Accés a Granada: A només 20 minuts en cotxe des de Valderrubio.",
+        "Aeroport Federico García Lorca Granada-Jaén: A 30 minuts en cotxe, amb connexions a diverses ciutats europees.",
+        "Transport públic: Busos regulars entre Valderrubio i Granada i altres punts d’interès.",
+        "Rutes amb bici: Lloguer de bicicletes disponible a Granada."
+      ],
+      backText: "« Tornar a la pàgina principal"
+    },
+    es: {
+      title: "Turismo en Valderrubio y alrededores de Granada",
+      hikingTitle: "Senderismo y rutas en bicicleta",
+      hikingText: "Descubre los hermosos paisajes de la Albufera y las montañas que rodean Valderrubio con rutas de senderismo y ciclismo para todos los niveles.",
+      culturalTitle: "Visitas culturales",
+      culturalList: [
+        "Casa-Museo Federico García Lorca: A pocos metros de Casa Mercedes, visita la casa donde vivió Lorca e inspiró su obra.",
+        "Casa de Bernarda Alba: Conocida por la obra de Lorca, situada también en Valderrubio.",
+        "Entradas: Compra las entradas en línea a través de la web oficial de la Casa Museo o en puntos de información turística.",
+        "Alhambra de Granada: Monumento imprescindible, reserva la visita anticipadamente en alhambra-patronato.es."
+      ],
+      foodTitle: "Gastronomía y ocio",
+      foodText: "Disfruta de la cocina andaluza en restaurantes tradicionales de Valderrubio y Granada. Descubre tapas, platos típicos y vinos locales en zonas de ocio con ambiente único.",
+      transportTitle: "Transporte y accesibilidad",
+      transportList: [
+        "Acceso a Granada: A sólo 20 minutos en coche desde Valderrubio.",
+        "Aeropuerto Federico García Lorca Granada-Jaén: A 30 minutos en coche, con conexiones a varias ciudades europeas.",
+        "Transporte público: Autobuses regulares entre Valderrubio y Granada y otros puntos de interés.",
+        "Rutas en bici: Alquiler de bicicletas disponible en Granada."
+      ],
+      backText: "« Volver a la página principal"
+    },
+    eu: {
+      title: "Turismoa Valderrubion eta Granadako inguruan",
+      hikingTitle: "Ibilaldiak eta bizikleta ibilbideak",
+      hikingText: "Ezkutu paisai politak Albuferan eta Valderrubioko inguruko mendietan, oinezko eta bizikleta ibilbideak maila guztietarako.",
+      culturalTitle: "Bisita kulturalak",
+      culturalList: [
+        "Federico García Lorca Museo Etxea: Casa Mercedesetik metro gutxira, Lorcaren etxea bisitatu eta bere lanak inspiratu ziren.",
+        "Bernarda Alba etxea: Lorcak egindako lanaren bitartez ezaguna, baita Valderrubion kokatua.",
+        "Sarrerak: Erosi sarrerak online Casa Museoaren web ofizialaren bidez edo turismo informazio puntuetatik.",
+        "Granadako Alhambra: Beharrezkoa den monumentua, aurretik erreserba egin alhambra-patronato.es webgunean."
+      ],
+      foodTitle: "Gastronomia eta aisialdia",
+      foodText: "Goza ezazu Andaluzia sukaldaritzaz Valderrubio eta Granadako jatetxe tradizionalean. Ezagutu tapak, plater tipikoak eta tokiko ardoak aisialdi zonetan giro apartarekin.",
+      transportTitle: "Garraioa eta irisgarritasuna",
+      transportList: [
+        "Granadara sarrera: 20 minututara autoz Valderrubiotik.",
+        "Federico García Lorca Granada-Jaén aireportua: 30 minututara autoz, hainbat hiri europarretako loturekin.",
+        "Garraio publikoa: Autobus erregularrak Valderrubio eta Granada eta beste interes puntuen artean.",
+        "Bizikleta ibilbideak: Bizikletak alokatzeko aukera Granadako."
+      ],
+      backText: "« Itzuli orrialde nagusira"
+    },
+    gl: {
+      title: "Turismo en Valderrubio e arredores de Granada",
+      hikingTitle: "Sendeirismo e rutas en bicicleta",
+      hikingText: "Descubre as fermosas paisaxes da Albufera e as montañas que rodean Valderrubio con sendeirismo e rutas en bicicleta para todos os niveis.",
+      culturalTitle: "Visitas culturais",
+      culturalList: [
+        "Casa-Museo Federico García Lorca: A poucos metros de Casa Mercedes, visita a casa onde viviu Lorca e inspirou a súa obra.",
+        "Casa de Bernarda Alba: Coñecida pola obra de Lorca, situada tamén en Valderrubio.",
+        "Entradas: Compra as entradas en liña a través da web oficial da Casa Museo ou en puntos de información turística.",
+        "Alhambra de Granada: Monumento imprescindible, reserva a visita anticipadamente en alhambra-patronato.es."
+      ],
+      foodTitle: "Gastronomía e ocio",
+      foodText: "Goza da cociña andaluza en restaurantes tradicionais de Valderrubio e Granada. Descubre tapas, pratos típicos e viños locais en zonas de ocio con ambiente único.",
+      transportTitle: "Transporte e accesibilidade",
+      transportList: [
+        "Acceso a Granada: A só 20 minutos en coche desde Valderrubio.",
+        "Aeroporto Federico García Lorca Granada-Xaén: A 30 minutos en coche, con conexións a varias cidades europeas.",
+        "Transporte público: Autobuses regulares entre Valderrubio e Granada e outros puntos de interese.",
+        "Rutas en bici: Aluguer de bicicletas dispoñible en Granada."
+      ],
+      backText: "« Volver á páxina principal"
+    },
+    en: {
+      title: "Tourism in Valderrubio and around Granada",
+      hikingTitle: "Hiking and Bike Routes",
+      hikingText: "Discover the beautiful landscapes of the Albufera and the mountains surrounding Valderrubio with hiking and cycling routes for all levels.",
+      culturalTitle: "Cultural Visits",
+      culturalList: [
+        "Federico García Lorca House-Museum: Just meters from Casa Mercedes, visit the house where Lorca lived and inspired his work.",
+        "Bernarda Alba’s House: Known from Lorca’s play, also located in Valderrubio.",
+        "Tickets: Buy tickets online through the official House Museum website or at tourist information points.",
+        "Alhambra of Granada: A must-see monument, book your visit in advance at alhambra-patronato.es."
+      ],
+      foodTitle: "Gastronomy and Leisure",
+      foodText: "Enjoy Andalusian cuisine in traditional restaurants in Valderrubio and Granada. Discover tapas, typical dishes, and local wines in leisure areas with a unique atmosphere.",
+      transportTitle: "Transport and Accessibility",
+      transportList: [
+        "Access to Granada: Only 20 minutes by car from Valderrubio.",
+        "Federico García Lorca Granada-Jaén Airport: 30 minutes by car, with connections to several European cities.",
+        "Public transport: Regular buses between Valderrubio and Granada and other points of interest.",
+        "Bike routes: Bicycle rental available in Granada."
+      ],
+      backText: "« Back to main page"
+    },
+    fr: {
+      title: "Tourisme à Valderrubio et autour de Grenade",
+      hikingTitle: "Randonnée et circuits à vélo",
+      hikingText: "Découvrez les beaux paysages de l'Albufera et les montagnes entourant Valderrubio avec des sentiers de randonnée et des pistes cyclables pour tous les niveaux.",
+      culturalTitle: "Visites culturelles",
+      culturalList: [
+        "Maison-musée Federico García Lorca : À quelques mètres de Casa Mercedes, visitez la maison où Lorca a vécu et a inspiré son œuvre.",
+        "Maison de Bernarda Alba : Connue grâce à la pièce de Lorca, également située à Valderrubio.",
+        "Billets : Achetez vos billets en ligne via le site officiel de la maison-musée ou aux points d'information touristique.",
+        "Alhambra de Grenade : Monument incontournable, réservez votre visite à l'avance sur alhambra-patronato.es."
+      ],
+      foodTitle: "Gastronomie et loisirs",
+      foodText: "Profitez de la cuisine andalouse dans les restaurants traditionnels de Valderrubio et Grenade. Découvrez tapas, plats typiques et vins locaux dans des zones de loisirs au cadre unique.",
+      transportTitle: "Transport et accessibilité",
+      transportList: [
+        "Accès à Grenade : À seulement 20 minutes en voiture de Valderrubio.",
+        "Aéroport Federico García Lorca Grenade-Jaén : À 30 minutes en voiture, avec des connexions vers plusieurs villes européennes.",
+        "Transports en commun : Bus réguliers entre Valderrubio et Grenade ainsi que d'autres points d'intérêt.",
+        "Itinéraires à vélo : Location de vélos disponible à Grenade."
+      ],
+      backText: "« Retour à la page principale"
+    },
+    de: {
+      title: "Tourismus in Valderrubio und Umgebung von Granada",
+      hikingTitle: "Wandern und Fahrradrouten",
+      hikingText: "Entdecken Sie die schönen Landschaften der Albufera und die Berge rund um Valderrubio mit Wander- und Radwegen für alle Schwierigkeitsgrade.",
+      culturalTitle: "Kulturelle Besuche",
+      culturalList: [
+        "Federico García Lorca Haus-Museum: Nur wenige Meter von Casa Mercedes entfernt, besuchen Sie das Haus, in dem Lorca lebte und das seine Werke inspirierte.",
+        "Bernarda Albas Haus: Bekannt aus Lorcas Stück, ebenfalls in Valderrubio gelegen.",
+        "Tickets: Kaufen Sie Tickets online über die offizielle Website des Hauses oder an Tourist-Informationsstellen.",
+        "Alhambra von Granada: Ein Muss, buchen Sie Ihren Besuch im Voraus auf alhambra-patronato.es."
+      ],
+      foodTitle: "Gastronomie und Freizeit",
+      foodText: "Genießen Sie die andalusische Küche in traditionellen Restaurants in Valderrubio und Granada. Entdecken Sie Tapas, typische Gerichte und lokale Weine in Freizeitbereichen mit einzigartiger Atmosphäre.",
+      transportTitle: "Transport und Erreichbarkeit",
+      transportList: [
+        "Zugang nach Granada: Nur 20 Minuten mit dem Auto von Valderrubio entfernt.",
+        "Flughafen Federico García Lorca Granada-Jaén: 30 Minuten mit dem Auto, mit Verbindungen zu mehreren europäischen Städten.",
+        "Öffentliche Verkehrsmittel: Regelmäßige Busse zwischen Valderrubio und Granada sowie anderen Sehenswürdigkeiten.",
+        "Fahrradrouten: Fahrradverleih in Granada verfügbar."
+      ],
+      backText: "« Zurück zur Hauptseite"
+    }
+  };
+
+  function changeLang(lang) {
+    document.getElementById('title').textContent = texts[lang].title;
+    document.getElementById('hiking-title').textContent = texts[lang].hikingTitle;
+    document.getElementById('hiking-text').textContent = texts[lang].hikingText;
+    document.getElementById('cultural-title').textContent = texts[lang].culturalTitle;
+
+    const culturalList = document.getElementById('cultural-list');
+    culturalList.innerHTML = '';
+    texts[lang].culturalList.forEach(item => {
+      const li = document.createElement('li');
+      if(item.includes('alhambra-patronato.es')) {
+        // Afegim link clicable a l'últim punt cultural
+        const link = document.createElement('a');
+        link.href = 'https://www.alhambra-patronato.es';
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = 'alhambra-patronato.es';
+        const textBefore = item.split('alhambra-patronato.es')[0];
+        li.textContent = textBefore;
+        li.appendChild(link);
+        const textAfter = item.split('alhambra-patronato.es')[1];
+        li.appendChild(document.createTextNode(textAfter));
+      } else {
+        li.textContent = item;
+      }
+      culturalList.appendChild(li);
+    });
+
+    document.getElementById('food-title').textContent = texts[lang].foodTitle;
+    document.getElementById('food-text').textContent = texts[lang].foodText;
+    document.getElementById('transport-title').textContent = texts[lang].transportTitle;
+
+    const transportList = document.getElementById('transport-list');
+    transportList.innerHTML = '';
+    texts[lang].transportList.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      transportList.appendChild(li);
+    });
+
+    document.getElementById('back-text').textContent = texts[lang].backText;
+  }
+
+  // Carrega idioma català per defecte
+  changeLang('ca');
+</script>
+
+</body>
+</html>
