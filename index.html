@@ -3,411 +3,368 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Casa Mercedes - Lloguer Vacacional a Andalusia</title>
-  <meta name="description" content="Lloga Casa Mercedes, un refugi andalús amb encant, perfecte per a escapades familiars i relax a la natura." />
+  <title>Casa Mercedes - Turisme Rural</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display&display=swap');
-
-    /* COLORS ANDALUSOS */
-    :root {
-      --terracota: #d9693e;
-      --blau-mari: #2c3e50;
-      --groc-calim: #f3c677;
-      --blanc-neutre: #f9f9f9;
-      --gris-text: #444;
-      --ombra-suau: rgba(0,0,0,0.15);
-    }
-
-    /* RESET & BASE */
-    * {
-      box-sizing: border-box;
-    }
-
+    /* Estil minimalista amb tocs andalusos, colors blanc, verd i fusta */
     body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fefefe;
+      color: #2f4f4f;
       margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: var(--blanc-neutre);
-      color: var(--gris-text);
-      line-height: 1.6;
+      padding: 0 1rem;
+      background-image: linear-gradient(to bottom right, #ffffff, #e7f1e7);
     }
-
-    a {
-      color: var(--terracota);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    a:hover {
-      color: var(--blau-mari);
-    }
-
     header {
-      position: relative;
-      height: 90vh;
-      background: url('img/portada.jpg') center center/cover no-repeat;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       text-align: center;
-      padding: 0 1rem;
-      font-family: 'Playfair Display', serif;
-      box-shadow: inset 0 0 0 1000px rgba(44, 62, 80, 0.6);
-    }
-
-    header h1 {
-      font-size: 4rem;
-      margin: 0 0 0.5rem;
-      text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
-    }
-
-    header p {
-      font-size: 1.5rem;
-      max-width: 600px;
-      margin-bottom: 2rem;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
-    }
-
-    .btn {
-      background-color: var(--terracota);
-      padding: 0.75rem 2rem;
-      border-radius: 50px;
-      color: white;
-      font-weight: 700;
-      font-size: 1.1rem;
-      box-shadow: 0 5px 10px var(--ombra-suau);
-      cursor: pointer;
-      border: none;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: background-color 0.3s ease;
-      text-decoration: none;
-    }
-
-    .btn:hover {
-      background-color: var(--groc-calim);
-      color: var(--blau-mari);
-    }
-
-    nav {
-      background: var(--blanc-neutre);
-      display: flex;
-      justify-content: center;
       padding: 1rem 0;
-      box-shadow: 0 2px 6px var(--ombra-suau);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav a {
-      margin: 0 1.5rem;
-      font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: 0.05em;
-      color: var(--blau-mari);
-    }
-
-    #language-selector {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background: var(--blanc-neutre);
-      border-radius: 8px;
-      box-shadow: 0 4px 8px var(--ombra-suau);
-      padding: 0.25rem 0.5rem;
-      font-weight: 700;
-      color: var(--blau-mari);
-      cursor: pointer;
-      z-index: 1100;
-      user-select: none;
-    }
-
-    #language-selector span {
-      margin: 0 0.5rem;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    #language-selector span.selected,
-    #language-selector span:hover {
-      background-color: var(--terracota);
+      background-color: #3a6b35; /* verd fosc */
       color: white;
+      font-weight: bold;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      font-family: 'Georgia', serif;
     }
-
-    section {
-      max-width: 1000px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
-
-    section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
-      color: var(--terracota);
-      margin-bottom: 1rem;
-      border-bottom: 3px solid var(--groc-calim);
-      padding-bottom: 0.3rem;
-    }
-
-    section p {
-      font-size: 1.15rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* GALERIA */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 1.25rem;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    /* DECORATIVE MOSAIC PATTERN */
-    .mosaic-bg {
-      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-      padding: 2rem;
-      color: white;
-      margin: 4rem 0;
+    nav {
       text-align: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      line-height: 1.4;
+      margin: 1rem 0;
+    }
+    nav button {
+      background-color: #b7d7b7; /* verd suau */
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 0 0.25rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    nav button:hover, nav button.active {
+      background-color: #3a6b35;
+      color: white;
+    }
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding-bottom: 3rem;
+    }
+    h2 {
+      color: #3a6b35;
+      border-bottom: 2px solid #b7d7b7;
+      padding-bottom: 0.25rem;
+      margin-top: 2rem;
+      font-family: 'Georgia', serif;
+    }
+    p {
+      line-height: 1.6;
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
     }
 
-    /* CONTACT */
-    #contacte p strong {
-      color: var(--terracota);
+    /* Carrusel */
+    .carousel-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      overflow: hidden;
+      border: 2px solid #3a6b35;
+      border-radius: 10px;
+      background-color: #fffaf0; /* tocs fusta clar */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .carousel-slide {
+      min-width: 50%; /* 2 per pantalla */
+      box-sizing: border-box;
+      padding: 1rem;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(58,107,53,0.3);
+    }
+    .carousel-buttons {
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+    .carousel-buttons button {
+      background-color: #b7d7b7;
+      border: none;
+      padding: 0.3rem 0.8rem;
+      margin: 0 0.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    .carousel-buttons button:hover {
+      background-color: #3a6b35;
+      color: white;
     }
 
     footer {
-      background: var(--blau-mari);
-      color: white;
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 1rem 0;
       font-size: 0.9rem;
-      margin-top: 4rem;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.8rem;
-      }
-      header p {
-        font-size: 1.1rem;
-      }
-      section h2 {
-        font-size: 2rem;
-      }
-      nav {
-        flex-wrap: wrap;
-      }
-      nav a {
-        margin: 0.5rem 1rem;
-      }
-      #language-selector {
-        position: static;
-        margin: 1rem auto;
-        display: flex;
-        justify-content: center;
-        width: fit-content;
-      }
+      color: #3a6b35;
+      font-family: 'Georgia', serif;
     }
   </style>
 </head>
+<style>
+    /* Rosa dibuix */
+      #rosa-lateral {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      padding: 10px;
+      z-index: 1000;
+    }
+    #rosa-lateral img {
+      width: 150px;
+      height: auto;
+      display: block;
+    }
+  /* Contenidor botons laterals */
+  .side-buttons {
+    position: fixed;
+    top: 40%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+  }
+
+  /* Estil bàsic dels botons */
+  .side-button {
+    background-color: #2f6f48; /* verd andalús */
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px 0 0 8px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+  }
+
+  .side-button:hover {
+    background-color: #246036;
+  }
+</style>
+
+<div class="side-buttons">
+  <a href="https://www.airbnb.com/rooms/xxxxxxxx" target="_blank" class="side-button" rel="noopener noreferrer">
+    Reserva a Airbnb
+  </a>
+  <a href="https://www.vrbo.com/xxxxxxxx" target="_blank" class="side-button" rel="noopener noreferrer">
+    Reserva a Vrbo
+  </a>
+
+  <!-- Botó souvenirs -->
+<button onclick="window.location.href='souvenirs.html'" style="background:#557a49; color:#fff; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold; margin:1rem 0;">
+  Souvenirs
+</button>
+<button onclick="window.location.href='turisme.html'" style="background:#557a49; color:#fff; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold; margin:1rem 0;">
+  Información Turística
+</button>
+</div>
 <body>
 
-  <!-- Selector d'idioma -->
-  <div id="language-selector" aria-label="Selector d'idioma">
-    <span data-lang="ca" class="selected" tabindex="0" role="button" aria-pressed="true" aria-label="Català">CAT</span> |
-    <span data-lang="es" tabindex="0" role="button" aria-pressed="false" aria-label="Castellà">ESP</span> |
-    <span data-lang="en" tabindex="0" role="button" aria-pressed="false" aria-label="Anglès">ENG</span>
-  </div>
 
-  <header>
-    <h1 data-lang-text="title">Casa Mercedes</h1>
-    <p data-lang-text="header-desc">El teu refugi andalús amb encant per a escapades familiars, romàntiques i de relax total.</p>
-    <a href="#contacte" class="btn" data-lang-text="reserve-btn">Reserva la teva estada</a>
-  </header>
+  <header>Casa Mercedes</header>
 
   <nav>
-    <a href="#casa" data-lang-text="nav-home">La Casa</a>
-    <a href="#entorn" data-lang-text="nav-environment">Entorn</a>
-    <a href="#galeria" data-lang-text="nav-gallery">Galeria</a>
-    <a href="#contacte" data-lang-text="nav-contact">Contacte</a>
+    <button data-lang="ca" class="active">Català</button>
+    <button data-lang="es">Español</button>
+    <button data-lang="en">English</button>
+    <button data-lang="fr">Français</button>
+    <button data-lang="de">Deutsch</button>
+    <button data-lang="gl">Galego</button>
+    <button data-lang="eu">Euskera</button>
   </nav>
 
-  <section id="casa">
-    <h2 data-lang-text="section-house-title">La Casa</h2>
-    <p data-lang-text="section-house-p1">Casa Mercedes és una acollidora casa rural amb totes les comoditats per a una estada inoblidable. Capacitat per a 6 persones, cuina totalment equipada, llar de foc, jardí privat i piscina.</p>
-    <p data-lang-text="section-house-p2">El seu disseny combina l’encant tradicional andalús amb comoditats modernes per fer que la teva estada sigui confortable i única.</p>
-  </section>
+  <main>
+    <section>
+      <h2 id="section1-title"></h2>
+      <p id="section1-text1"></p>
+      <p id="section1-text2"></p>
+      <p id="section1-text3"></p>
+      <p id="section1-text4"></p>
+      <p id="section1-text5"></p>
+    </section>
 
-  <section id="entorn" class="mosaic-bg">
-    <h2 data-lang-text="section-environment-title">L'Entorn</h2>
-    <p data-lang-text="section-environment-p">Immersa en la natura, Casa Mercedes està envoltada de rutes de senderisme, pobles amb encant, mercats locals i gastronomia andalusa autèntica. Un lloc perfecte per desconnectar i redescobrir la calma.</p>
-  </section>
+    <section>
+      <h2 id="section2-title"></h2>
+      <p id="section2-text"></p>
+    </section>
 
-  <section id="galeria">
-    <h2 data-lang-text="section-gallery-title">Galeria</h2>
-    <div class="gallery">
-      <img src="img/1.jpg" alt="Vista exterior de Casa Mercedes" data-lang-alt="gallery-img1-alt" />
-      <img src="img/2.jpg" alt="Interior acollidor amb llar de foc" data-lang-alt="gallery-img2-alt" />
-      <img src="img/3.jpg" alt="Jardí amb piscina i espais per relaxar-se" data-lang-alt="gallery-img3-alt" />
-      <img src="img/4.jpg" alt="Detall d'ornaments andalusos a la casa" data-lang-alt="gallery-img4-alt" />
-    </div>
-  </section>
-
-  <section id="contacte">
-    <h2 data-lang-text="section-contact-title">Contacte i Reserves</h2>
-    <p data-lang-text="section-contact-p1">Vols assegurar la teva escapada a Casa Mercedes? Contacta'ns ara mateix!</p>
-    <p><strong data-lang-text="contact-email-label">Email:</strong> <a href="mailto:hola@casamercedes.cat">hola@casamercedes.cat</a></p>
-    <p><strong data-lang-text="contact-phone-label">Telèfon:</strong> <a href="tel:+34600000000">+34 600 000 000</a></p>
-    <a href="mailto:hola@casamercedes.cat" class="btn" data-lang-text="contact-btn">Contacta'ns</a>
-  </section>
+    <section class="carousel-container">
+      <div class="carousel-track" id="carousel-track">
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Patio Andaluz" />
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80" alt="Cocina amplia" />
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80" alt="Habitación con luz natural" />
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1505692794400-7a93ac6ee8d1?auto=format&fit=crop&w=800&q=80" alt="Patio con pozo" />
+        </div>
+      </div>
+      <div class="carousel-buttons">
+        <button id="prevBtn">&#10094; Anterior</button>
+        <button id="nextBtn">Siguiente &#10095;</button>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 Casa Mercedes. Tots els drets reservats.
+    &copy; 2025 Casa Mercedes - Valderrubio
   </footer>
 
   <script>
-    // Textos en els 3 idiomes
-    const texts = {
+    const translations = {
       ca: {
-        'title': 'Casa Mercedes',
-        'header-desc': 'El teu refugi andalús amb encant per a escapades familiars, romàntiques i de relax total.',
-        'reserve-btn': 'Reserva la teva estada',
-        'nav-home': 'La Casa',
-        'nav-environment': 'Entorn',
-        'nav-gallery': 'Galeria',
-        'nav-contact': 'Contacte',
-        'section-house-title': 'La Casa',
-        'section-house-p1': 'Casa Mercedes és una acollidora casa rural amb totes les comoditats per a una estada inoblidable. Capacitat per a 6 persones, cuina totalment equipada, llar de foc, jardí privat i piscina.',
-        'section-house-p2': 'El seu disseny combina l’encant tradicional andalús amb comoditats modernes per fer que la teva estada sigui confortable i única.',
-        'section-environment-title': "L'Entorn",
-        'section-environment-p': 'Immersa en la natura, Casa Mercedes està envoltada de rutes de senderisme, pobles amb encant, mercats locals i gastronomia andalusa autèntica. Un lloc perfecte per desconnectar i redescobrir la calma.',
-        'section-gallery-title': 'Galeria',
-        'gallery-img1-alt': 'Vista exterior de Casa Mercedes',
-        'gallery-img2-alt': 'Interior acollidor amb llar de foc',
-        'gallery-img3-alt': 'Jardí amb piscina i espais per relaxar-se',
-        'gallery-img4-alt': "Detall d'ornaments andalusos a la casa",
-        'section-contact-title': 'Contacte i Reserves',
-        'section-contact-p1': "Vols assegurar la teva escapada a Casa Mercedes? Contacta'ns ara mateix!",
-        'contact-email-label': 'Email:',
-        'contact-phone-label': 'Telèfon:',
-        'contact-btn': "Contacta'ns"
+        'section1-title': 'Casa Mercedes, un llegat andalús ple d\'història i ànima',
+        'section1-text1': `A Valderrubio, un petit poble bressolat per oliveres i records, s’amaga una casa plena d’ànima, silenci i poesia. A pocs passos de la històrica casa de Federico García Lorca, la nostra llar acull els ecos d’aquella Andalusia que ell va immortalitzar: blanca, intensa, viva.`,
+        'section1-text2': `Aquesta casa de quatre habitacions —una d'elles a la planta baixa, ideal per accés fàcil—, compta amb dues sales de bany i una àmplia cuina-menjador on els àpats es barregen amb rialles i històries. Però és al seu pati andalús on el temps sembla aturar-se: un espai íntim, presidit per un antic pou, on la brisa murmura versos antics.`,
+        'section1-text3': `Imagina’t esmorzant a la llum suau del matí, escoltant els sons del poble que desperta… o llegint sota l’ombra, sabent que en aquells mateixos carrers Lorca va imaginar Bernarda Alba, va sentir la terra i la veu de les dones del sud.`,
+        'section1-text4': `Allotjar-se aquí no és només descansar: és respirar literatura, viure cultura, caminar per escenaris reals de l’obra lorquiana. És tornar a una Andalusia autèntica i plena de màgia.`,
+        'section1-text5': `📍 A només uns metres de la Casa Museu de Federico García Lorca, la nostra casa és un refugi per a amants de la pau, l’art i la bellesa.`,
+        'section2-title': 'Un homenatge a les dones de la casa',
+        'section2-text': `Casa Mercedes rep el seu nom de les dones de la casa: dones lluitadores, emprenedores, valentes, decidides i autosuficients, com la meva àvia i els seus avantpassats. Aquestes dones van teixir la història d’aquesta casa i van deixar una empremta de força i coratge que encara es respira a cada racó.`
       },
       es: {
-        'title': 'Casa Mercedes',
-        'header-desc': 'Tu refugio andaluz con encanto para escapadas familiares, románticas y de relax total.',
-        'reserve-btn': 'Reserva tu estancia',
-        'nav-home': 'La Casa',
-        'nav-environment': 'Entorno',
-        'nav-gallery': 'Galería',
-        'nav-contact': 'Contacto',
-        'section-house-title': 'La Casa',
-        'section-house-p1': 'Casa Mercedes es una acogedora casa rural con todas las comodidades para una estancia inolvidable. Capacidad para 6 personas, cocina totalmente equipada, chimenea, jardín privado y piscina.',
-        'section-house-p2': 'Su diseño combina el encanto tradicional andaluz con comodidades modernas para hacer que tu estancia sea confortable y única.',
-        'section-environment-title': 'El Entorno',
-        'section-environment-p': 'Inmersa en la naturaleza, Casa Mercedes está rodeada de rutas de senderismo, pueblos con encanto, mercados locales y gastronomía andaluza auténtica. Un lugar perfecto para desconectar y redescubrir la calma.',
-        'section-gallery-title': 'Galería',
-        'gallery-img1-alt': 'Vista exterior de Casa Mercedes',
-        'gallery-img2-alt': 'Interior acogedor con chimenea',
-        'gallery-img3-alt': 'Jardín con piscina y espacios para relajarse',
-        'gallery-img4-alt': 'Detalle de ornamentos andaluces en la casa',
-        'section-contact-title': 'Contacto y Reservas',
-        'section-contact-p1': '¿Quieres asegurar tu escapada en Casa Mercedes? ¡Contacta con nosotros ahora mismo!',
-        'contact-email-label': 'Email:',
-        'contact-phone-label': 'Teléfono:',
-        'contact-btn': 'Contacta'
+        'section1-title': 'Casa Mercedes, un legado andaluz lleno de historia y alma',
+        'section1-text1': `En Valderrubio, un pequeño pueblo mecido por olivos y recuerdos, se esconde una casa llena de alma, silencio y poesía. A pocos pasos de la histórica casa de Federico García Lorca, nuestro hogar alberga los ecos de esa Andalucía que él inmortalizó: blanca, intensa, viva.`,
+        'section1-text2': `Esta casa de cuatro habitaciones —una de ellas en la planta baja, ideal para fácil acceso—, cuenta con dos baños y una amplia cocina-comedor donde las comidas se mezclan con risas e historias. Pero es en su patio andaluz donde el tiempo parece detenerse: un espacio íntimo, presidido por un antiguo pozo, donde la brisa susurra versos antiguos.`,
+        'section1-text3': `Imagínate desayunando a la luz suave de la mañana, escuchando los sonidos del pueblo que despierta… o leyendo bajo la sombra, sabiendo que en esas mismas calles Lorca imaginó a Bernarda Alba, sintió la tierra y la voz de las mujeres del sur.`,
+        'section1-text4': `Alojarse aquí no es solo descansar: es respirar literatura, vivir cultura, caminar por escenarios reales de la obra lorquiana. Es volver a una Andalucía auténtica y llena de magia.`,
+        'section1-text5': `📍 A solo unos metros de la Casa Museo de Federico García Lorca, nuestra casa es un refugio para amantes de la paz, el arte y la belleza.`,
+        'section2-title': 'Un homenaje a las mujeres de la casa',
+        'section2-text': `Casa Mercedes debe su nombre a las mujeres de la casa: mujeres luchadoras, emprendedoras, valientes, decididas y autosuficientes, como mi abuela y sus antepasados. Estas mujeres tejieron la historia de esta casa y dejaron una huella de fuerza y coraje que aún se respira en cada rincón.`
       },
       en: {
-        'title': 'Casa Mercedes',
-        'header-desc': 'Your charming Andalusian retreat for family, romantic and relaxing getaways.',
-        'reserve-btn': 'Book Your Stay',
-        'nav-home': 'The House',
-        'nav-environment': 'Surroundings',
-        'nav-gallery': 'Gallery',
-        'nav-contact': 'Contact',
-        'section-house-title': 'The House',
-        'section-house-p1': 'Casa Mercedes is a cozy rural house with all the comforts for an unforgettable stay. Capacity for 6 people, fully equipped kitchen, fireplace, private garden and pool.',
-        'section-house-p2': 'Its design combines traditional Andalusian charm with modern comforts to make your stay comfortable and unique.',
-        'section-environment-title': 'The Surroundings',
-        'section-environment-p': 'Nestled in nature, Casa Mercedes is surrounded by hiking trails, charming villages, local markets and authentic Andalusian gastronomy. A perfect place to disconnect and rediscover calm.',
-        'section-gallery-title': 'Gallery',
-        'gallery-img1-alt': 'Exterior view of Casa Mercedes',
-        'gallery-img2-alt': 'Cozy interior with fireplace',
-        'gallery-img3-alt': 'Garden with pool and relaxation spaces',
-        'gallery-img4-alt': 'Detail of Andalusian ornaments in the house',
-        'section-contact-title': 'Contact & Bookings',
-        'section-contact-p1': 'Want to secure your getaway at Casa Mercedes? Contact us right now!',
-        'contact-email-label': 'Email:',
-        'contact-phone-label': 'Phone:',
-        'contact-btn': 'Contact Us'
+        'section1-title': 'Casa Mercedes, an Andalusian legacy full of history and soul',
+        'section1-text1': `In Valderrubio, a small village rocked by olive trees and memories, hides a house full of soul, silence, and poetry. Just steps from the historic home of Federico García Lorca, our home holds the echoes of that Andalucía he immortalized: white, intense, alive.`,
+        'section1-text2': `This four-bedroom house —one on the ground floor, ideal for easy access— features two bathrooms and a spacious kitchen-dining room where meals blend with laughter and stories. But it’s in its Andalusian courtyard where time seems to stop: an intimate space, dominated by an old well, where the breeze whispers ancient verses.`,
+        'section1-text3': `Imagine having breakfast in the soft morning light, listening to the sounds of the waking village… or reading in the shade, knowing that in those same streets Lorca imagined Bernarda Alba, felt the earth, and heard the voices of southern women.`,
+        'section1-text4': `Staying here is not just resting: it is breathing literature, living culture, walking through real settings of Lorca’s work. It is returning to an authentic and magical Andalucía.`,
+        'section1-text5': `📍 Just a few meters from the Federico García Lorca House Museum, our home is a refuge for lovers of peace, art, and beauty.`,
+        'section2-title': 'A tribute to the women of the house',
+        'section2-text': `Casa Mercedes is named after the women of the house: strong, entrepreneurial, brave, determined, and self-sufficient women like my grandmother and her ancestors. These women wove the history of this house and left a mark of strength and courage that can still be felt in every corner.`
+      },
+      fr: {
+        'section1-title': 'Casa Mercedes, un héritage andalou plein d\'histoire et d\'âme',
+        'section1-text1': `À Valderrubio, un petit village bercé par les oliviers et les souvenirs, se cache une maison pleine d’âme, de silence et de poésie. À quelques pas de la maison historique de Federico García Lorca, notre foyer abrite les échos de cette Andalousie qu’il a immortalisée : blanche, intense, vivante.`,
+        'section1-text2': `Cette maison de quatre chambres — dont une au rez-de-chaussée, idéale pour un accès facile — comprend deux salles de bains et une grande cuisine-salle à manger où les repas se mêlent aux rires et aux histoires. Mais c’est dans sa cour andalouse que le temps semble s’arrêter : un espace intime, dominé par un vieux puits, où la brise murmure des vers anciens.`,
+        'section1-text3': `Imaginez-vous prendre le petit-déjeuner à la douce lumière du matin, écouter les sons du village qui s’éveille… ou lire à l’ombre, sachant que dans ces mêmes rues Lorca a imaginé Bernarda Alba, ressenti la terre et entendu la voix des femmes du sud.`,
+        'section1-text4': `Séjourner ici, ce n’est pas seulement se reposer : c’est respirer la littérature, vivre la culture, marcher à travers les décors réels de l’œuvre de Lorca. C’est revenir à une Andalousie authentique et pleine de magie.`,
+        'section1-text5': `📍 À seulement quelques mètres de la maison-musée Federico García Lorca, notre maison est un refuge pour les amoureux de la paix, de l’art et de la beauté.`,
+        'section2-title': 'Un hommage aux femmes de la maison',
+        'section2-text': `Casa Mercedes doit son nom aux femmes de la maison : des femmes combattantes, entrepreneuses, courageuses, déterminées et autonomes, comme ma grand-mère et ses ancêtres. Ces femmes ont tissé l’histoire de cette maison et laissé une trace de force et de courage qui se ressent encore dans chaque recoin.`
+      },
+      de: {
+        'section1-title': 'Casa Mercedes, ein andalusisches Erbe voller Geschichte und Seele',
+        'section1-text1': `In Valderrubio, einem kleinen Dorf, das von Olivenbäumen und Erinnerungen umgeben ist, verbirgt sich ein Haus voller Seele, Stille und Poesie. Nur wenige Schritte vom historischen Haus Federico García Lorcas entfernt, birgt unser Zuhause die Echos jener Andalusien, die er unsterblich machte: weiß, intensiv, lebendig.`,
+        'section1-text2': `Dieses Haus mit vier Schlafzimmern — eines davon im Erdgeschoss, ideal für leichten Zugang — verfügt über zwei Badezimmer und eine geräumige Wohnküche, in der Mahlzeiten mit Lachen und Geschichten verschmelzen. Doch erst im andalusischen Innenhof scheint die Zeit stillzustehen: ein intimer Raum, geprägt von einem alten Brunnen, wo die Brise alte Verse flüstert.`,
+        'section1-text3': `Stellen Sie sich vor, Sie frühstücken im sanften Morgenlicht, hören die Geräusche des erwachenden Dorfes… oder lesen im Schatten und wissen, dass Lorca in genau diesen Straßen Bernarda Alba erdachte, die Erde spürte und die Stimmen der Frauen des Südens hörte.`,
+        'section1-text4': `Hier zu wohnen heißt nicht nur auszuruhen: Es bedeutet, Literatur zu atmen, Kultur zu leben und durch reale Schauplätze von Lorcas Werk zu wandeln. Es bedeutet, zu einem authentischen und magischen Andalusien zurückzukehren.`,
+        'section1-text5': `📍 Nur wenige Meter vom Federico García Lorca Hausmuseum entfernt ist unser Haus ein Zufluchtsort für Liebhaber von Frieden, Kunst und Schönheit.`,
+        'section2-title': 'Eine Hommage an die Frauen des Hauses',
+        'section2-text': `Casa Mercedes verdankt seinen Namen den Frauen des Hauses: kämpferische, unternehmerische, mutige, entschlossene und eigenständige Frauen, wie meine Großmutter und ihre Vorfahren. Diese Frauen webten die Geschichte dieses Hauses und hinterließen eine Spur von Stärke und Mut, die noch heute in jeder Ecke spürbar ist.`
+      },
+      gl: {
+        'section1-title': 'Casa Mercedes, un legado andaluz cheo de historia e alma',
+        'section1-text1': `En Valderrubio, un pequeno pobo bercado por oliveiras e recordos, agocha unha casa chea de alma, silencio e poesía. A poucos pasos da histórica casa de Federico García Lorca, o noso fogar acolle os ecos desa Andalucía que el inmortalizou: branca, intensa, viva.`,
+        'section1-text2': `Esta casa de catro habitacións — unha delas na planta baixa, ideal para fácil acceso — conta con dous baños e unha ampla cociña-comedor onde as comidas se mesturan con risas e historias. Pero é no seu patio andaluz onde o tempo parece detererse: un espazo íntimo, presidido por un antigo pozo, onde a brisa murmura versos antigos.`,
+        'section1-text3': `Imagina esmorzar á luz suave da mañá, escoitando os sons do pobo que espertan… ou lendo á sombra, sabendo que nas mesmas rúas Lorca imaxinou a Bernarda Alba, sentiu a terra e a voz das mulleres do sur.`,
+        'section1-text4': `Aloxarse aquí non é só descansar: é respirar literatura, vivir cultura, camiñar por escenarios reais da obra lorquiana. É volver a unha Andalucía auténtica e chea de maxia.`,
+        'section1-text5': `📍 A só uns metros da Casa Museo de Federico García Lorca, a nosa casa é un refuxio para amantes da paz, a arte e a beleza.`,
+        'section2-title': 'Un homenaxe ás mulleres da casa',
+        'section2-text': `Casa Mercedes debe o seu nome ás mulleres da casa: mulleres loitadoras, emprendedoras, valentes, decididas e autosuficientes, como a miña avoa e os seus antepasados. Estas mulleres teceron a historia desta casa e deixaron unha pegada de forza e coraxe que aínda se respira en cada recuncho.`
+      },
+      eu: {
+        'section1-title': 'Casa Mercedes, historia eta arimaz betetako andaluziar ondarea',
+        'section1-text1': `Valderrubion, olibo zuhaitzen eta oroitzapenen artean dardarka dagoen herri txiki batean, arima, isiltasuna eta poesiaz beteriko etxe bat dago. Federico García Lorcaren etxe historikotik pauso gutxira, gure etxeak berebiziko Andaluzia horren oihartzunak gordetzen ditu: zuria, bizia, bizi-bizia.`,
+        'section1-text2': `Lau logela dituen etxe honek — horietako bat beheko solairuan, sarbide erraza duena — bi bainugela eta janariak barre eta istorioekin nahasten diren sukalde-jangela zabal bat ditu. Baina bere patio andaluzan denbora geldirik dirudi: zulo zahar batek agintzen duen espazio intimo bat, non haizeak bertako bertso zaharrak xuxurlatzen dituen.`,
+        'section1-text3': `Goizeko argi leunean gosaltzen irudika ezazu, herriaren soinua entzuten duzun bitartean... edo itzalpean irakurtzen, Lorcak bertako kaleetan Bernarda Alba irudikatu zuela, lurra eta hegoaldeko emakumeen ahotsa sentitu zuela jakinda.`,
+        'section1-text4': `Hemen egotea ez da atseden hartzea bakarrik: literaturaz arnasten, kulturaz bizi eta Lorcaren lanaren eszena errealean ibiltzea da. Andaluzia autentiko eta magiko batera itzultzea da.`,
+        'section1-text5': `📍 Federico García Lorcaren etxe museotik metro gutxira, gure etxea bakea, artea eta edertasuna maite dutenentzako aterpe bat da.`,
+        'section2-title': 'Etxeko emakumeei omenaldia',
+        'section2-text': `Casa Mercedes etxeko emakumeei zor die bere izena: borrokalari, ekintzaileen, ausarten, erabakien eta autosufizienteen taldeari, nire amonari eta bere arbasoei bezala. Emakume hauek etxearen historia ehundu zuten eta indar eta ausardiaren arrasto bat utzi zuten, oraindik ere txoko bakoitzean sentitzen dena.`
       }
     };
 
-    // Funció per canviar l'idioma
-    function changeLanguage(lang) {
-      document.documentElement.lang = lang;
+    const buttons = document.querySelectorAll('nav button');
+    const elementsToTranslate = [
+      'section1-title',
+      'section1-text1',
+      'section1-text2',
+      'section1-text3',
+      'section1-text4',
+      'section1-text5',
+      'section2-title',
+      'section2-text'
+    ];
 
-      // Canviar textos
-      document.querySelectorAll('[data-lang-text]').forEach(el => {
-        const key = el.getAttribute('data-lang-text');
-        if(texts[lang] && texts[lang][key]) {
-          el.textContent = texts[lang][key];
-        }
+    function setLanguage(lang) {
+      // Actualitzar text
+      elementsToTranslate.forEach(id => {
+        document.getElementById(id).textContent = translations[lang][id];
       });
 
-      // Canviar alt de les imatges
-      document.querySelectorAll('img[data-lang-alt]').forEach(img => {
-        const key = img.getAttribute('data-lang-alt');
-        if(texts[lang] && texts[lang][key]) {
-          img.alt = texts[lang][key];
-        }
-      });
-
-      // Actualitzar selector
-      document.querySelectorAll('#language-selector span').forEach(span => {
-        if(span.getAttribute('data-lang') === lang) {
-          span.classList.add('selected');
-          span.setAttribute('aria-pressed', 'true');
-        } else {
-          span.classList.remove('selected');
-          span.setAttribute('aria-pressed', 'false');
-        }
+      // Actualitzar botons actius
+      buttons.forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
       });
     }
 
-    // Esdeveniments click per canviar idioma
-    document.querySelectorAll('#language-selector span').forEach(span => {
-      span.addEventListener('click', () => {
-        changeLanguage(span.getAttribute('data-lang'));
-      });
-      span.addEventListener('keydown', (e) => {
-        if(e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          changeLanguage(span.getAttribute('data-lang'));
-        }
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        setLanguage(button.getAttribute('data-lang'));
       });
     });
 
-    // Inicialitzar idioma per defecte
-    changeLanguage('ca');
+    // Carrusel
+    const track = document.getElementById('carousel-track');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let index = 0;
+    const slidesToShow = 2;
+    const totalSlides = track.children.length;
+
+    function updateCarousel() {
+      const slideWidth = track.children[0].getBoundingClientRect().width;
+      track.style.transform = `translateX(${-index * slideWidth}px)`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + totalSlides - slidesToShow + 1) % (totalSlides - slidesToShow + 1);
+      updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % (totalSlides - slidesToShow + 1);
+      updateCarousel();
+    });
+
+    // Inicialitzar la llengua per defecte
+    setLanguage('es');
+    updateCarousel();
   </script>
+
+<!-- Rosa minimalista i elegant estil ploma lateral esquerra -->
+<div id="rosa-lateral">
+  <img src="rosa.png" alt="Rosa decorativa" style="width: 350px; height: auto;">
+
+</div>
 </body>
 </html>
-
