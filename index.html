@@ -2,155 +2,412 @@
 <html lang="ca">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Descobreix Casa Mercedes, la teva escapada perfecta a la natura. Ideal per a turisme familiar, escapades romàntiques i relax total." />
-  <title>Casa Mercedes - Lloguer Turisme Vacacional</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Casa Mercedes - Lloguer Vacacional a Andalusia</title>
+  <meta name="description" content="Lloga Casa Mercedes, un refugi andalús amb encant, perfecte per a escapades familiars i relax a la natura." />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display&display=swap');
+
+    /* COLORS ANDALUSOS */
+    :root {
+      --terracota: #d9693e;
+      --blau-mari: #2c3e50;
+      --groc-calim: #f3c677;
+      --blanc-neutre: #f9f9f9;
+      --gris-text: #444;
+      --ombra-suau: rgba(0,0,0,0.15);
+    }
+
+    /* RESET & BASE */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--blanc-neutre);
+      color: var(--gris-text);
       line-height: 1.6;
     }
 
+    a {
+      color: var(--terracota);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: var(--blau-mari);
+    }
+
     header {
-      background-image: url('img/portada.jpg');
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
+      position: relative;
+      height: 90vh;
+      background: url('img/portada.jpg') center center/cover no-repeat;
       color: white;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 2rem;
+      padding: 0 1rem;
+      font-family: 'Playfair Display', serif;
+      box-shadow: inset 0 0 0 1000px rgba(44, 62, 80, 0.6);
     }
 
     header h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px #000;
+      font-size: 4rem;
+      margin: 0 0 0.5rem;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
     }
 
     header p {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       max-width: 600px;
-      margin: 0 auto;
-      text-shadow: 1px 1px 2px #000;
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    }
+
+    .btn {
+      background-color: var(--terracota);
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 5px 10px var(--ombra-suau);
+      cursor: pointer;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: var(--groc-calim);
+      color: var(--blau-mari);
     }
 
     nav {
-      background: #ffffffdd;
-      backdrop-filter: blur(10px);
+      background: var(--blanc-neutre);
       display: flex;
       justify-content: center;
-      padding: 1rem;
+      padding: 1rem 0;
+      box-shadow: 0 2px 6px var(--ombra-suau);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 1000;
     }
 
     nav a {
-      margin: 0 1rem;
-      color: #333;
-      text-decoration: none;
-      font-weight: bold;
+      margin: 0 1.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      color: var(--blau-mari);
+    }
+
+    #language-selector {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: var(--blanc-neutre);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px var(--ombra-suau);
+      padding: 0.25rem 0.5rem;
+      font-weight: 700;
+      color: var(--blau-mari);
+      cursor: pointer;
+      z-index: 1100;
+      user-select: none;
+    }
+
+    #language-selector span {
+      margin: 0 0.5rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    #language-selector span.selected,
+    #language-selector span:hover {
+      background-color: var(--terracota);
+      color: white;
     }
 
     section {
-      padding: 4rem 2rem;
       max-width: 1000px;
-      margin: auto;
+      margin: 3rem auto;
+      padding: 0 1rem;
     }
 
     section h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--terracota);
+      margin-bottom: 1rem;
+      border-bottom: 3px solid var(--groc-calim);
+      padding-bottom: 0.3rem;
     }
 
+    section p {
+      font-size: 1.15rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* GALERIA */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 1.25rem;
     }
 
     .gallery img {
       width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* DECORATIVE MOSAIC PATTERN */
+    .mosaic-bg {
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      padding: 2rem;
+      color: white;
+      margin: 4rem 0;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      line-height: 1.4;
+    }
+
+    /* CONTACT */
+    #contacte p strong {
+      color: var(--terracota);
     }
 
     footer {
+      background: var(--blau-mari);
+      color: white;
       text-align: center;
-      padding: 2rem;
-      background: #333;
-      color: white;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      margin-top: 4rem;
     }
 
-    .btn {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 0.75rem 1.5rem;
-      background-color: #007b5e;
-      color: white;
-      border: none;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 1rem;
-    }
-
-    .btn:hover {
-      background-color: #005f47;
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.8rem;
+      }
+      header p {
+        font-size: 1.1rem;
+      }
+      section h2 {
+        font-size: 2rem;
+      }
+      nav {
+        flex-wrap: wrap;
+      }
+      nav a {
+        margin: 0.5rem 1rem;
+      }
+      #language-selector {
+        position: static;
+        margin: 1rem auto;
+        display: flex;
+        justify-content: center;
+        width: fit-content;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Selector d'idioma -->
+  <div id="language-selector" aria-label="Selector d'idioma">
+    <span data-lang="ca" class="selected" tabindex="0" role="button" aria-pressed="true" aria-label="Català">CAT</span> |
+    <span data-lang="es" tabindex="0" role="button" aria-pressed="false" aria-label="Castellà">ESP</span> |
+    <span data-lang="en" tabindex="0" role="button" aria-pressed="false" aria-label="Anglès">ENG</span>
+  </div>
+
   <header>
-    <h1>Casa Mercedes</h1>
-    <p>La teva escapada de somni a la natura. Relaxa’t, desconnecta i gaudeix del confort amb encant rural.</p>
-    <a href="#reserva" class="btn">Reserva Ara</a>
+    <h1 data-lang-text="title">Casa Mercedes</h1>
+    <p data-lang-text="header-desc">El teu refugi andalús amb encant per a escapades familiars, romàntiques i de relax total.</p>
+    <a href="#contacte" class="btn" data-lang-text="reserve-btn">Reserva la teva estada</a>
   </header>
 
   <nav>
-    <a href="#casa">La Casa</a>
-    <a href="#entorn">Entorn</a>
-    <a href="#galeria">Galeria</a>
-    <a href="#contacte">Contacte</a>
+    <a href="#casa" data-lang-text="nav-home">La Casa</a>
+    <a href="#entorn" data-lang-text="nav-environment">Entorn</a>
+    <a href="#galeria" data-lang-text="nav-gallery">Galeria</a>
+    <a href="#contacte" data-lang-text="nav-contact">Contacte</a>
   </nav>
 
   <section id="casa">
-    <h2>La Casa</h2>
-    <p>Casa Mercedes és una encantadora casa rural equipada amb totes les comoditats per a una estada perfecta. Capacitat per a 6 persones, cuina equipada, llar de foc i jardí privat amb vistes espectaculars.</p>
+    <h2 data-lang-text="section-house-title">La Casa</h2>
+    <p data-lang-text="section-house-p1">Casa Mercedes és una acollidora casa rural amb totes les comoditats per a una estada inoblidable. Capacitat per a 6 persones, cuina totalment equipada, llar de foc, jardí privat i piscina.</p>
+    <p data-lang-text="section-house-p2">El seu disseny combina l’encant tradicional andalús amb comoditats modernes per fer que la teva estada sigui confortable i única.</p>
   </section>
 
-  <section id="entorn">
-    <h2>L'Entorn</h2>
-    <p>Situada enmig de la natura, Casa Mercedes ofereix accés directe a rutes de senderisme, pobles amb encant i gastronomia local. Ideal per a famílies, parelles o amants de la tranquil·litat.</p>
+  <section id="entorn" class="mosaic-bg">
+    <h2 data-lang-text="section-environment-title">L'Entorn</h2>
+    <p data-lang-text="section-environment-p">Immersa en la natura, Casa Mercedes està envoltada de rutes de senderisme, pobles amb encant, mercats locals i gastronomia andalusa autèntica. Un lloc perfecte per desconnectar i redescobrir la calma.</p>
   </section>
 
   <section id="galeria">
-    <h2>Galeria</h2>
+    <h2 data-lang-text="section-gallery-title">Galeria</h2>
     <div class="gallery">
-      <img src="img/1.jpg" alt="Casa Mercedes vista exterior" />
-      <img src="img/2.jpg" alt="Interior acollidor" />
-      <img src="img/3.jpg" alt="Jardí amb vistes" />
+      <img src="img/1.jpg" alt="Vista exterior de Casa Mercedes" data-lang-alt="gallery-img1-alt" />
+      <img src="img/2.jpg" alt="Interior acollidor amb llar de foc" data-lang-alt="gallery-img2-alt" />
+      <img src="img/3.jpg" alt="Jardí amb piscina i espais per relaxar-se" data-lang-alt="gallery-img3-alt" />
+      <img src="img/4.jpg" alt="Detall d'ornaments andalusos a la casa" data-lang-alt="gallery-img4-alt" />
     </div>
   </section>
 
   <section id="contacte">
-    <h2 id="reserva">Contacte i Reserves</h2>
-    <p>Per reservar la teva estada o fer qualsevol consulta, contacta'ns a:</p>
-    <p><strong>Email:</strong> hola@casamercedes.cat</p>
-    <p><strong>Telèfon:</strong> +34 600 000 000</p>
-    <a href="mailto:hola@casamercedes.cat" class="btn">Contacta ara</a>
+    <h2 data-lang-text="section-contact-title">Contacte i Reserves</h2>
+    <p data-lang-text="section-contact-p1">Vols assegurar la teva escapada a Casa Mercedes? Contacta'ns ara mateix!</p>
+    <p><strong data-lang-text="contact-email-label">Email:</strong> <a href="mailto:hola@casamercedes.cat">hola@casamercedes.cat</a></p>
+    <p><strong data-lang-text="contact-phone-label">Telèfon:</strong> <a href="tel:+34600000000">+34 600 000 000</a></p>
+    <a href="mailto:hola@casamercedes.cat" class="btn" data-lang-text="contact-btn">Contacta'ns</a>
   </section>
 
   <footer>
     &copy; 2025 Casa Mercedes. Tots els drets reservats.
   </footer>
 
+  <script>
+    // Textos en els 3 idiomes
+    const texts = {
+      ca: {
+        'title': 'Casa Mercedes',
+        'header-desc': 'El teu refugi andalús amb encant per a escapades familiars, romàntiques i de relax total.',
+        'reserve-btn': 'Reserva la teva estada',
+        'nav-home': 'La Casa',
+        'nav-environment': 'Entorn',
+        'nav-gallery': 'Galeria',
+        'nav-contact': 'Contacte',
+        'section-house-title': 'La Casa',
+        'section-house-p1': 'Casa Mercedes és una acollidora casa rural amb totes les comoditats per a una estada inoblidable. Capacitat per a 6 persones, cuina totalment equipada, llar de foc, jardí privat i piscina.',
+        'section-house-p2': 'El seu disseny combina l’encant tradicional andalús amb comoditats modernes per fer que la teva estada sigui confortable i única.',
+        'section-environment-title': "L'Entorn",
+        'section-environment-p': 'Immersa en la natura, Casa Mercedes està envoltada de rutes de senderisme, pobles amb encant, mercats locals i gastronomia andalusa autèntica. Un lloc perfecte per desconnectar i redescobrir la calma.',
+        'section-gallery-title': 'Galeria',
+        'gallery-img1-alt': 'Vista exterior de Casa Mercedes',
+        'gallery-img2-alt': 'Interior acollidor amb llar de foc',
+        'gallery-img3-alt': 'Jardí amb piscina i espais per relaxar-se',
+        'gallery-img4-alt': "Detall d'ornaments andalusos a la casa",
+        'section-contact-title': 'Contacte i Reserves',
+        'section-contact-p1': "Vols assegurar la teva escapada a Casa Mercedes? Contacta'ns ara mateix!",
+        'contact-email-label': 'Email:',
+        'contact-phone-label': 'Telèfon:',
+        'contact-btn': "Contacta'ns"
+      },
+      es: {
+        'title': 'Casa Mercedes',
+        'header-desc': 'Tu refugio andaluz con encanto para escapadas familiares, románticas y de relax total.',
+        'reserve-btn': 'Reserva tu estancia',
+        'nav-home': 'La Casa',
+        'nav-environment': 'Entorno',
+        'nav-gallery': 'Galería',
+        'nav-contact': 'Contacto',
+        'section-house-title': 'La Casa',
+        'section-house-p1': 'Casa Mercedes es una acogedora casa rural con todas las comodidades para una estancia inolvidable. Capacidad para 6 personas, cocina totalmente equipada, chimenea, jardín privado y piscina.',
+        'section-house-p2': 'Su diseño combina el encanto tradicional andaluz con comodidades modernas para hacer que tu estancia sea confortable y única.',
+        'section-environment-title': 'El Entorno',
+        'section-environment-p': 'Inmersa en la naturaleza, Casa Mercedes está rodeada de rutas de senderismo, pueblos con encanto, mercados locales y gastronomía andaluza auténtica. Un lugar perfecto para desconectar y redescubrir la calma.',
+        'section-gallery-title': 'Galería',
+        'gallery-img1-alt': 'Vista exterior de Casa Mercedes',
+        'gallery-img2-alt': 'Interior acogedor con chimenea',
+        'gallery-img3-alt': 'Jardín con piscina y espacios para relajarse',
+        'gallery-img4-alt': 'Detalle de ornamentos andaluces en la casa',
+        'section-contact-title': 'Contacto y Reservas',
+        'section-contact-p1': '¿Quieres asegurar tu escapada en Casa Mercedes? ¡Contacta con nosotros ahora mismo!',
+        'contact-email-label': 'Email:',
+        'contact-phone-label': 'Teléfono:',
+        'contact-btn': 'Contacta'
+      },
+      en: {
+        'title': 'Casa Mercedes',
+        'header-desc': 'Your charming Andalusian retreat for family, romantic and relaxing getaways.',
+        'reserve-btn': 'Book Your Stay',
+        'nav-home': 'The House',
+        'nav-environment': 'Surroundings',
+        'nav-gallery': 'Gallery',
+        'nav-contact': 'Contact',
+        'section-house-title': 'The House',
+        'section-house-p1': 'Casa Mercedes is a cozy rural house with all the comforts for an unforgettable stay. Capacity for 6 people, fully equipped kitchen, fireplace, private garden and pool.',
+        'section-house-p2': 'Its design combines traditional Andalusian charm with modern comforts to make your stay comfortable and unique.',
+        'section-environment-title': 'The Surroundings',
+        'section-environment-p': 'Nestled in nature, Casa Mercedes is surrounded by hiking trails, charming villages, local markets and authentic Andalusian gastronomy. A perfect place to disconnect and rediscover calm.',
+        'section-gallery-title': 'Gallery',
+        'gallery-img1-alt': 'Exterior view of Casa Mercedes',
+        'gallery-img2-alt': 'Cozy interior with fireplace',
+        'gallery-img3-alt': 'Garden with pool and relaxation spaces',
+        'gallery-img4-alt': 'Detail of Andalusian ornaments in the house',
+        'section-contact-title': 'Contact & Bookings',
+        'section-contact-p1': 'Want to secure your getaway at Casa Mercedes? Contact us right now!',
+        'contact-email-label': 'Email:',
+        'contact-phone-label': 'Phone:',
+        'contact-btn': 'Contact Us'
+      }
+    };
+
+    // Funció per canviar l'idioma
+    function changeLanguage(lang) {
+      document.documentElement.lang = lang;
+
+      // Canviar textos
+      document.querySelectorAll('[data-lang-text]').forEach(el => {
+        const key = el.getAttribute('data-lang-text');
+        if(texts[lang] && texts[lang][key]) {
+          el.textContent = texts[lang][key];
+        }
+      });
+
+      // Canviar alt de les imatges
+      document.querySelectorAll('img[data-lang-alt]').forEach(img => {
+        const key = img.getAttribute('data-lang-alt');
+        if(texts[lang] && texts[lang][key]) {
+          img.alt = texts[lang][key];
+        }
+      });
+
+      // Actualitzar selector
+      document.querySelectorAll('#language-selector span').forEach(span => {
+        if(span.getAttribute('data-lang') === lang) {
+          span.classList.add('selected');
+          span.setAttribute('aria-pressed', 'true');
+        } else {
+          span.classList.remove('selected');
+          span.setAttribute('aria-pressed', 'false');
+        }
+      });
+    }
+
+    // Esdeveniments click per canviar idioma
+    document.querySelectorAll('#language-selector span').forEach(span => {
+      span.addEventListener('click', () => {
+        changeLanguage(span.getAttribute('data-lang'));
+      });
+      span.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          changeLanguage(span.getAttribute('data-lang'));
+        }
+      });
+    });
+
+    // Inicialitzar idioma per defecte
+    changeLanguage('ca');
+  </script>
 </body>
 </html>
+
