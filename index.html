@@ -115,20 +115,29 @@
   </style>
 </head>
 <style>
-    /* Rosa dibuix */
-      #rosa-lateral {
-      position: fixed;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-      padding: 10px;
-      z-index: 1000;
-    }
+     /* Rosa dibuix */
+  #rosa-lateral {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    padding: 10px;
+    z-index: 1000;
+  }
+
+  #rosa-lateral img {
+    width: 350px;
+    height: auto;
+    display: block;
+  }
+
+  @media screen and (max-width: 600px) {
     #rosa-lateral img {
       width: 150px;
       height: auto;
-      display: block;
+      opacity: 0.5; /* Opcional, la fa més suau al mòbil */
     }
+  }
   /* Contenidor botons laterals */
   .side-buttons {
     position: fixed;
@@ -389,25 +398,10 @@
     updateCarousel();
   </script>
 
-#rosa-lateral {
-  position: absolute; /* o relative, segons com l'hagis posicionat */
-  left: 0;
-  top: 0;
-  z-index: 0;
-}
-
-.rosa-img {
-  max-width: 100%;
-  height: auto;
-  width: 350px;
-}
-
-@media screen and (max-width: 600px) {
-  .rosa-img {
-    width: 150px; /* o el valor que millor encaixi */
-    opacity: 0.5; /* opcional, per fer-la més suau al mòbil */
-  }
-}
+<!-- Rosa minimalista i elegant estil ploma lateral esquerra -->
+<div id="rosa-lateral">
+  <img src="rosa.png" alt="Rosa decorativa">
+</div>
 
 </body>
 </html>
