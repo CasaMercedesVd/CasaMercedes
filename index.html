@@ -389,10 +389,24 @@
     updateCarousel();
   </script>
 
-<!-- Rosa minimalista i elegant estil ploma lateral esquerra -->
-<div id="rosa-lateral">
-  <img src="rosa.png" alt="Rosa decorativa" style="width: 350px; height: auto;">
+#rosa-lateral {
+  position: absolute; /* o relative, segons com l'hagis posicionat */
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
 
-</div>
+.rosa-img {
+  max-width: 100%;
+  height: auto;
+  width: 350px;
+}
+
+@media screen and (max-width: 600px) {
+  .rosa-img {
+    width: 150px; /* o el valor que millor encaixi */
+    opacity: 0.5; /* opcional, per fer-la més suau al mòbil */
+  }
+}
 </body>
 </html>
