@@ -5,168 +5,209 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Casa Mercedes - Turisme Rural</title>
   <style>
-    /* Estil minimalista amb tocs andalusos, colors blanc, verd i fusta */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #fefefe;
-      color: #2f4f4f;
-      margin: 0;
-      padding: 0 1rem;
-      background-image: linear-gradient(to bottom right, #ffffff, #e7f1e7);
-    }
-    header {
-      text-align: center;
-      padding: 1rem 0;
-      background-color: #3a6b35; /* verd fosc */
-      color: white;
-      font-weight: bold;
-      font-size: 1.8rem;
-      letter-spacing: 2px;
-      font-family: 'Georgia', serif;
-    }
-    nav {
-      text-align: center;
-      margin: 1rem 0;
-    }
-    nav button {
-      background-color: #b7d7b7; /* verd suau */
-      border: none;
-      padding: 0.5rem 1rem;
-      margin: 0 0.25rem;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
-    nav button:hover, nav button.active {
-      background-color: #3a6b35;
-      color: white;
-    }
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding-bottom: 3rem;
-    }
-    h2 {
-      color: #3a6b35;
-      border-bottom: 2px solid #b7d7b7;
-      padding-bottom: 0.25rem;
-      margin-top: 2rem;
-      font-family: 'Georgia', serif;
-    }
-    p {
-      line-height: 1.6;
-      margin-top: 0.5rem;
-      font-size: 1.1rem;
+    :root {
+      --main-green: #3a6b35;
+      --light-green: #b7d7b7;
+      --wood-bg: #fffaf0;
+      --text-color: #2f4f4f;
+      --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --font-title: 'Georgia', serif;
     }
 
-    /* Carrusel */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background-image: linear-gradient(to bottom right, #ffffff, #e7f1e7);
+      color: var(--text-color);
+    }
+
+    header {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background-color: var(--main-green);
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      font-family: var(--font-title);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem;
+    }
+
+    nav button {
+      background-color: var(--light-green);
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-size: 1rem;
+    }
+
+    nav button:hover,
+    nav button.active {
+      background-color: var(--main-green);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem 1rem;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: var(--main-green);
+      border-bottom: 2px solid var(--light-green);
+      padding-bottom: 0.25rem;
+      font-family: var(--font-title);
+      margin-top: 2rem;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
     .carousel-container {
-      max-width: 900px;
+      background-color: var(--wood-bg);
+      border: 2px solid var(--main-green);
+      border-radius: 10px;
       margin: 2rem auto;
       overflow: hidden;
-      border: 2px solid #3a6b35;
-      border-radius: 10px;
-      background-color: #fffaf0; /* tocs fusta clar */
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
+
     .carousel-track {
       display: flex;
       transition: transform 0.5s ease-in-out;
+      width: max-content;
     }
+
     .carousel-slide {
-      min-width: 50%; /* 2 per pantalla */
-      box-sizing: border-box;
+      min-width: 100%;
       padding: 1rem;
     }
+
+    @media screen and (min-width: 768px) {
+      .carousel-slide {
+        min-width: 50%;
+      }
+    }
+
     .carousel-slide img {
       width: 100%;
       height: 250px;
       object-fit: cover;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(58,107,53,0.3);
+      transition: transform 0.3s ease;
     }
+
+    .carousel-slide img:hover {
+      transform: scale(1.02);
+    }
+
     .carousel-buttons {
       text-align: center;
       margin-top: 0.5rem;
     }
+
     .carousel-buttons button {
-      background-color: #b7d7b7;
+      background-color: var(--light-green);
       border: none;
-      padding: 0.3rem 0.8rem;
-      margin: 0 0.2rem;
+      padding: 0.5rem 1rem;
+      margin: 0 0.3rem;
       border-radius: 5px;
       cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
+
     .carousel-buttons button:hover {
-      background-color: #3a6b35;
+      background-color: var(--main-green);
       color: white;
+      transform: scale(1.05);
+    }
+
+    .side-buttons {
+      position: fixed;
+      top: 40%;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    .side-button {
+      background-color: #2f6f48;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px 0 0 8px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .side-button:hover {
+      background-color: #246036;
+      transform: translateX(-5px);
+    }
+
+    #rosa-lateral {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      z-index: 1000;
+    }
+
+    #rosa-lateral img {
+      width: 300px;
+      height: auto;
+    }
+
+    @media screen and (max-width: 600px) {
+      #rosa-lateral img {
+        width: 80px;
+        opacity: 0.5;
+      }
     }
 
     footer {
       text-align: center;
-      padding: 1rem 0;
+      padding: 1rem;
       font-size: 0.9rem;
-      color: #3a6b35;
-      font-family: 'Georgia', serif;
+      color: var(--main-green);
+      font-family: var(--font-title);
+      background-color: #f4f9f4;
+      border-top: 1px solid #d0e4d0;
     }
   </style>
-</head>
-<style>
-     /* Rosa dibuix */
-  #rosa-lateral {
-    position: fixed;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    padding: 10px;
-    z-index: 1000;
-  }
-
-  #rosa-lateral img {
-    width: 350px;
-    height: auto;
-    display: block;
-  }
-
-  @media screen and (max-width: 600px) {
-    #rosa-lateral img {
-      width: 50px;
-      height: auto;
-      opacity: 0.5; /* Opcional, la fa més suau al mòbil */
-    }
-  }
-  /* Contenidor botons laterals */
-  .side-buttons {
-    position: fixed;
-    top: 40%;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    z-index: 1000;
-  }
-
-  /* Estil bàsic dels botons */
-  .side-button {
-    background-color: #2f6f48; /* verd andalús */
-    color: white;
-    padding: 12px 18px;
-    border-radius: 8px 0 0 8px;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    transition: background-color 0.3s ease;
-  }
-
-  .side-button:hover {
-    background-color: #246036;
-  }
-</style>
-
-<div class="side-buttons">
+  <div class="side-buttons">
   <a href="https://www.airbnb.es/rooms/1445048264603455447?source_impression_id=p3_1751526745_P3zPkPV4BSFUpLfJ" target="_blank" class="side-button" rel="noopener noreferrer">
     Reserva a Airbnb
   </a>
