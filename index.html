@@ -129,17 +129,11 @@
       height: auto;
       display: block;
     }
-     @media screen and (max-width: 480px) {
-      #rosa-lateral img {
-        opacity: 0.4;
-      }
-     }
-  
   /* Contenidor botons laterals */
   .side-buttons {
     position: fixed;
     top: 40%;
-    right: 100px;
+    right: 0;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -163,18 +157,19 @@
   }
 </style>
 
-<div style="overflow: auto;padding: 0 1.5rem;width: 100%;display: flex;justify-content: center;">
-  <iframe
-        id="host-websites-widget"
-        width="1280"
-        height="1000"
-        src="https://widget.holiduhost.com/widget/3d37bfd0-bc03-4446-a944-f4e33996ecbf">
- </iframe>
-</div>
-<button onclick="window.location.href='souvenirs.html'" style="background:#2f6f48; color:#fff; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold; margin:1rem 0;">
+<div class="side-buttons">
+  <a href="https://www.airbnb.com/rooms/xxxxxxxx" target="_blank" class="side-button" rel="noopener noreferrer">
+    Reserva a Airbnb
+  </a>
+  <a href="https://www.vrbo.com/xxxxxxxx" target="_blank" class="side-button" rel="noopener noreferrer">
+    Reserva a Vrbo
+  </a>
+
+  <!-- Botó souvenirs -->
+<button onclick="window.location.href='souvenirs.html'" style="background:#557a49; color:#fff; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold; margin:1rem 0;">
   Souvenirs
 </button>
-<button onclick="window.location.href='turisme.html'" style="background:#2f6f48; color:#fff; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold; margin:1rem 0;">
+<button onclick="window.location.href='turisme.html'" style="background:#557a49; color:#fff; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold; margin:1rem 0;">
   Información Turística
 </button>
 </div>
@@ -208,7 +203,7 @@
       <p id="section2-text"></p>
     </section>
 
-    <section class="carousel-container">
+  <section class="carousel-container">
       <div class="carousel-track" id="carousel-track">
         <div class="carousel-slide">
           <img src="IMG-20250616-WA0033 (1).jpg" alt="Patio Andaluz" />
@@ -254,10 +249,9 @@
         <button id="prevBtn">&#10094; Anterior</button>
         <button id="nextBtn">Siguiente &#10095;</button>
       </div>
-      
+   
     </section>
   </main>
-    
   <footer>
     &copy; 2025 Casa Mercedes - Valderrubio
   </footer>
