@@ -5,222 +5,163 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Casa Mercedes - Turisme Rural</title>
   <style>
-    :root {
-      --main-green: #3a6b35;
-      --light-green: #b7d7b7;
-      --wood-bg: #fffaf0;
-      --text-color: #2f4f4f;
-      --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      --font-title: 'Georgia', serif;
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-
+    /* Estil minimalista amb tocs andalusos, colors blanc, verd i fusta */
     body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fefefe;
+      color: #2f4f4f;
       margin: 0;
-      font-family: var(--font-body);
+      padding: 0 1rem;
       background-image: linear-gradient(to bottom right, #ffffff, #e7f1e7);
-      color: var(--text-color);
     }
-
     header {
       text-align: center;
-      padding: 1.5rem 1rem;
-      background-color: var(--main-green);
+      padding: 1rem 0;
+      background-color: #3a6b35; /* verd fosc */
       color: white;
-      font-size: 2rem;
       font-weight: bold;
-      font-family: var(--font-title);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      font-family: 'Georgia', serif;
     }
-
     nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 1rem;
+      text-align: center;
+      margin: 1rem 0;
     }
-
     nav button {
-      background-color: var(--light-green);
+      background-color: #b7d7b7; /* verd suau */
       border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      margin: 0 0.25rem;
+      border-radius: 5px;
       cursor: pointer;
-      font-weight: bold;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      font-size: 1rem;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
     }
-
-    nav button:hover,
-    nav button.active {
-      background-color: var(--main-green);
+    nav button:hover, nav button.active {
+      background-color: #3a6b35;
       color: white;
-      transform: scale(1.05);
     }
-
     main {
-      max-width: 1000px;
+      max-width: 900px;
       margin: auto;
-      padding: 2rem 1rem;
-      animation: fadeIn 1s ease-in;
+      padding-bottom: 3rem;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     h2 {
-      color: var(--main-green);
-      border-bottom: 2px solid var(--light-green);
+      color: #3a6b35;
+      border-bottom: 2px solid #b7d7b7;
       padding-bottom: 0.25rem;
-      font-family: var(--font-title);
       margin-top: 2rem;
+      font-family: 'Georgia', serif;
     }
-
     p {
       line-height: 1.6;
-      font-size: 1.1rem;
       margin-top: 0.5rem;
+      font-size: 1.1rem;
     }
 
+    /* Carrusel */
     .carousel-container {
-      background-color: var(--wood-bg);
-      border: 2px solid var(--main-green);
-      border-radius: 10px;
+      max-width: 900px;
       margin: 2rem auto;
       overflow: hidden;
+      border: 2px solid #3a6b35;
+      border-radius: 10px;
+      background-color: #fffaf0; /* tocs fusta clar */
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding-bottom: 3rem; /* espacio para los botones */
-      position: relative;
     }
-
     .carousel-track {
       display: flex;
       transition: transform 0.5s ease-in-out;
-      width: max-content;
     }
-
     .carousel-slide {
-      min-width: 100%;
+      min-width: 50%; /* 2 per pantalla */
+      box-sizing: border-box;
       padding: 1rem;
     }
-
-    @media screen and (min-width: 768px) {
-      .carousel-slide {
-        min-width: 50%;
-      }
-    }
-
     .carousel-slide img {
       width: 100%;
       height: 250px;
       object-fit: cover;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(58,107,53,0.3);
-      transition: transform 0.3s ease;
     }
-
-    .carousel-slide img:hover {
-      transform: scale(1.02);
-    }
-
     .carousel-buttons {
-      position: absolute;
-      bottom: 0.5rem;
-      left: 0;
-      right: 0;
       text-align: center;
+      margin-top: 0.5rem;
     }
-
     .carousel-buttons button {
-      background-color: var(--main-green);
+      background-color: #b7d7b7;
       border: none;
-      padding: 0.5rem 1rem;
-      margin: 0 0.3rem;
+      padding: 0.3rem 0.8rem;
+      margin: 0 0.2rem;
       border-radius: 5px;
       cursor: pointer;
-      font-weight: bold;
-      font-size: 1rem;
-      color: white;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
     }
-
     .carousel-buttons button:hover {
-      background-color: #2a5227;
-      transform: scale(1.05);
-    }
-
-    .side-buttons {
-      position: fixed;
-      top: 40%;
-      right: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 1000;
-    }
-
-    .side-button,
-    .side-buttons button {
-      background-color: var(--main-green);
+      background-color: #3a6b35;
       color: white;
-      padding: 12px 20px;
-      border-radius: 8px 0 0 8px;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 0.95rem;
-      border: none;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      cursor: pointer;
-    }
-
-    .side-button:hover,
-    .side-buttons button:hover {
-      background-color: #2a5227;
-      transform: translateX(-5px);
-    }
-
-    #rosa-lateral {
-      position: fixed;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-      z-index: 1000;
-    }
-
-    #rosa-lateral img {
-      width: 300px;
-      height: auto;
-    }
-
-    @media screen and (max-width: 600px) {
-      #rosa-lateral img {
-        width: 80px;
-        opacity: 0.5;
-      }
     }
 
     footer {
       text-align: center;
-      padding: 1rem;
+      padding: 1rem 0;
       font-size: 0.9rem;
-      color: var(--main-green);
-      font-family: var(--font-title);
-      background-color: #f4f9f4;
-      border-top: 1px solid #d0e4d0;
+      color: #3a6b35;
+      font-family: 'Georgia', serif;
     }
   </style>
-  <div class="side-buttons">
-  <a href="https://www.airbnb.es/rooms/1445048264603455447?source_impression_id=p3_1751526745_P3zPkPV4BSFUpLfJ" target="_blank" class="side-button" rel="noopener noreferrer">
+</head>
+<style>
+    /* Rosa dibuix */
+      #rosa-lateral {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      padding: 10px;
+      z-index: 1000;
+    }
+    #rosa-lateral img {
+      width: 150px;
+      height: auto;
+      display: block;
+    }
+  /* Contenidor botons laterals */
+  .side-buttons {
+    position: fixed;
+    top: 40%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+  }
+
+  /* Estil bàsic dels botons */
+  .side-button {
+    background-color: #2f6f48; /* verd andalús */
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px 0 0 8px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+  }
+
+  .side-button:hover {
+    background-color: #246036;
+  }
+</style>
+
+<div class="side-buttons">
+  <a href="https://www.airbnb.com/rooms/xxxxxxxx" target="_blank" class="side-button" rel="noopener noreferrer">
     Reserva a Airbnb
   </a>
-  <a href="https://www.vrbo.com/en-au/holiday-rental/p11886854" target="_blank" class="side-button" rel="noopener noreferrer">
+  <a href="https://www.vrbo.com/xxxxxxxx" target="_blank" class="side-button" rel="noopener noreferrer">
     Reserva a Vrbo
   </a>
 
@@ -265,50 +206,22 @@
     <section class="carousel-container">
       <div class="carousel-track" id="carousel-track">
         <div class="carousel-slide">
-          <img src="IMG-20250616-WA0033 (1).jpg" alt="Patio Andaluz" />
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Patio Andaluz" />
         </div>
         <div class="carousel-slide">
-          <img src="IMG-20250616-WA0037.jpg" alt="Patio Andaluz" />
+          <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80" alt="Cocina amplia" />
         </div>
         <div class="carousel-slide">
-          <img src="Pati_S.png" alt="Patio Andaluz" />
+          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80" alt="Habitación con luz natural" />
         </div>
         <div class="carousel-slide">
-          <img src="cuina_S.png" alt="Cocina comedor" />
+          <img src="https://images.unsplash.com/photo-1505692794400-7a93ac6ee8d1?auto=format&fit=crop&w=800&q=80" alt="Patio con pozo" />
         </div>
-        <div class="carousel-slide">
-          <img src="IMG-20250616-WA0046.jpg" alt="Cocina comedor" />
-        </div>
-        <div class="carousel-slide">
-          <img src="Saló_S.png" alt="Salón" />
-        </div>
-        <div class="carousel-slide">
-          <img src="IMG-20250616-WA0034.jpg" alt="Salón" />
-        </div>
-        <div class="carousel-slide">
-          <img src="Dormitori 2_S.png" alt="Dormitorio Cama doble grande" />
-        </div>
-        <div class="carousel-slide">
-          <img src="Habitació_1_S.png" alt="Dormitorio Cama doble grande" />
-        </div>
-        <div class="carousel-slide">
-          <img src="Habitació 3_S.png" alt="Dormitorio 2 camas" />
-        </div>
-        <div class="carousel-slide">
-          <img src="Habitació 4_S.png" alt="Dormitorio 2 camas" />
-        </div>
-        <div class="carousel-slide">
-          <img src="IMG-20250616-WA0040.jpg" alt="Cuarto de baño" />
-        </div>
-        <div class="carousel-slide">
-          <img src="IMG-20250616-WA0048.jpg" alt="Cuarto de baño" />
-        </div>
-       </div>
+      </div>
       <div class="carousel-buttons">
         <button id="prevBtn">&#10094; Anterior</button>
         <button id="nextBtn">Siguiente &#10095;</button>
       </div>
-   
     </section>
   </main>
 
@@ -450,8 +363,8 @@
 
 <!-- Rosa minimalista i elegant estil ploma lateral esquerra -->
 <div id="rosa-lateral">
-  <img src="rosa.png" alt="Rosa decorativa">
-</div>
+  <img src="rosa.png" alt="Rosa decorativa" style="width: 350px; height: auto;">
 
+</div>
 </body>
 </html>
